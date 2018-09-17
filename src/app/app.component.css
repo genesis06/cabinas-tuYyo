@@ -9,6 +9,9 @@
   padding: .75rem 2rem;
 }
 
+.nav-item, .sidebar .nav-link {
+  color: gray;
+}
 
 .sidebar .nav-link:hover {
   background-color: #f7f7f7;
@@ -33,6 +36,4 @@
   margin-right: 10px;
 }
 
-.nav-item, .sidebar .nav-link {
-  color: gray;
-}
+
