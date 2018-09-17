@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<div class="sidebar-lg-show app header-fixed aside-menu-fixed sidebar-lg-show pace-running pace-done aside-menu-lg-show">
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+
+          <li class="nav-item brand">
+            <img src="../../../assets/tu&yo-06.png" alt="logo" width="90">
+          </li>
+
+
+          <li class="nav-item selected">
+            <a class="nav-link  white" routerLink="/rooms">
+              <i class="icon cui-home "></i> Cabinas
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link white" routerLink="/employees">
+              <i class="icon cui-user"></i> Trabajadores
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link  white" routerLink="">
+              <i class="icon cui-basket-loaded"></i> Artículos
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link  white" routerLink="">
+              <i class="icon cui-settings"></i> Cerrar sesión
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
