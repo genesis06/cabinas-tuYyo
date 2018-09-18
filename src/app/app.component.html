@@ -1,6 +1,6 @@
 <div class="sidebar-lg-show app header-fixed aside-menu-fixed sidebar-lg-show pace-running pace-done aside-menu-lg-show">
   <div class="app-body">
-    <div class="sidebar">
+    <div *ngIf="showHide()" class="sidebar">
       <nav class="sidebar-nav">
         <ul class="nav">
 
@@ -9,8 +9,8 @@
           </li>
 
 
-          <li class="nav-item selected">
-            <a class="nav-link  white" routerLink="/rooms">
+          <li class="nav-item">
+            <a class="nav-link white" routerLink="/rooms">
               <i class="icon cui-home "></i> Cabinas
             </a>
           </li>
@@ -28,7 +28,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link  white" routerLink="">
+            <a class="nav-link  white" (click)="logout()">
               <i class="icon cui-settings"></i> Cerrar sesión
             </a>
           </li>

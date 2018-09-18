@@ -4,14 +4,16 @@ import { LoginComponent } from './components/login/login.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 
+
+import { AuthGuard } from './shared/auth-guard/auth-guard.service';
+
 // Import Containers
 
 export const routes: Routes = [
- { path: '', redirectTo: '/login', pathMatch: 'full'},
- { path: 'login', component: LoginComponent },
-{ path: 'employees', component: EmployeesComponent },
-{ path: 'rooms', component: RoomsComponent }
-  
+  { path: '', redirectTo: '/rooms', pathMatch: 'full'},
+  { path: 'login', component: LoginComponent },
+  { path: 'employees', component: EmployeesComponent , canActivate: [AuthGuard]},
+  { path: 'rooms', component: RoomsComponent , canActivate: [AuthGuard]}
 ];
 
 
