@@ -1,4 +1,8 @@
 <div class="sidebar-lg-show app header-fixed aside-menu-fixed sidebar-lg-show pace-running pace-done aside-menu-lg-show">
+  <!-- <header class="app-header navbar bar"> -->
+  <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" data-toggle="sidebar-show" type="button"><span class="navbar-toggler-icon"> <i class="icon cui-list"></i></span></button>
+  
+<!-- </header> -->
   <div class="app-body">
     <div *ngIf="showHide()" class="sidebar">
       <nav class="sidebar-nav">
@@ -9,20 +13,20 @@
           </li>
 
 
-          <li class="nav-item">
-            <a class="nav-link white" routerLink="/rooms">
+          <li class="nav-item" routerLink="/rooms" [class.selected]="router.url === '/rooms'">
+            <a class="nav-link white">
               <i class="icon cui-home "></i> Cabinas
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link white" routerLink="/employees">
+          <li class="nav-item" routerLink="/employees" [class.selected]="router.url === '/employees'">
+            <a class="nav-link white">
               <i class="icon cui-user"></i> Trabajadores
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link  white" routerLink="">
+          <li class="nav-item" routerLink="" [class.selected]="router.url === '/'">
+            <a class="nav-link  white">
               <i class="icon cui-basket-loaded"></i> Artículos
             </a>
           </li>

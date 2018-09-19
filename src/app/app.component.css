@@ -2,7 +2,6 @@
   width: 200px !important;
   height: 1000px;
   background-color: #dadada;
-  margin-left: 0 !important;
 }
 
 .sidebar .nav-link {
@@ -36,4 +35,7 @@
   margin-right: 10px;
 }
 
+.cui-list{
+  margin-left: 18px;
+}
 
