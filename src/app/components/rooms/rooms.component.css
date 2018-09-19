@@ -6,8 +6,16 @@
     background-color: rgb(83, 83, 83);
 }
 
+.available-color{
+    color: rgb(83, 83, 83);
+}
+
 .inUse{
     background-color: #d25051;
+}
+
+.inUse-color{
+    color: #d25051;
 }
 
 .text-gray{
