@@ -26,6 +26,9 @@
     border-color: #b62b3b;
 }
 
+.red{
+   color: #b62b3b !important;
+}
 body{
     background-color: white;
 }
@@ -39,4 +42,16 @@ body{
 
 .container-fluid{
     margin: 1em;
+}
+
+h4{
+    margin-bottom: 2em;
+}
+
+.search{
+    margin-bottom: 1.5em;
+}
+
+.table td, .table th{
+    border-top: transparent;
 }

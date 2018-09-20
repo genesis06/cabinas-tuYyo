@@ -1,14 +1,14 @@
 .sidebar {
   width: 200px !important;
   height: 1000px;
-  background-color: #dadada;
+  background-color: #eaeaea;
 }
 
 .sidebar .nav-link {
   padding: .75rem 2rem;
 }
 
-.nav-item, .sidebar .nav-link {
+.nav-item, .sidebar {
   color: gray;
 }
 
@@ -18,7 +18,7 @@
   cursor: pointer;
 }
 
-.selected, .sidebar .nav-link.active {
+.selected, .sidebar .nav-link:active {
   background-color: white !important;
   color: #d25051 !important;
   font-weight: bold !important;
