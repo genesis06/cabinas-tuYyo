@@ -1,6 +1,7 @@
 <div>
   <h4>Alquiler de cabinas</h4>
   <div class="row types">
+
     <div class="col-sm-6 col-lg-4">
       <div class="">
         <div class="h4 m-0">80</div>
@@ -41,21 +42,29 @@
 
   <div class="clearfix"></div>
 
+  <div class="input-group search">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
+      </div>
+      <input class="form-control" type="text" placeholder="Buscar" aria-label="Input group example"
+        aria-describedby="btnGroupAddon">
+    </div>
+
   <div class="row">
     <div class="col-sm-6 col-lg-4">
       <div class="card text-gray bg-white">
         <div class="card-body pb-0">
           <div class="btn-group float-right nav-item dropdown d-md-down-none" dropdown="">
-            <button class="btn dropdown-toggle p-0"
-              data-toggle="dropdown" id="simple-dropdown" type="button" aria-haspopup="true" aria-expanded="false"><i class="icon cui-settings"></i>
+            <button class="btn dropdown-toggle p-0" data-toggle="dropdown" id="simple-dropdown" type="button"
+              aria-haspopup="true" aria-expanded="false"><i class="icon cui-settings"></i>
             </button>
 
-            <div aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right dropdown-menu-lg"
-              style="left: auto; right: 0px; top: 100%; transform: translateY(0px);">
+            <div aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right dropdown-menu-lg" style="left: auto; right: 0px; top: 100%; transform: translateY(0px);">
               <div class="dropdown-header text-lefts"><strong>Estado</strong></div><a class="dropdown-item" href="#"><i
-                  class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a><a class="dropdown-item" href="#"><i
-                  class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i> En uso </a><a class="dropdown-item" href="#"><i
-                  class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En mantenimiento </a>
+                  class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a><a
+                class="dropdown-item" href="#"><i class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i>
+                En uso </a><a class="dropdown-item" href="#"><i class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En
+                mantenimiento </a>
 
             </div>
           </div>
