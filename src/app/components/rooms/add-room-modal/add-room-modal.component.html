@@ -11,26 +11,37 @@
       </div>
 
       <div class="modal-body">
-          <div class="float-left">
-          <div class="input-group mb-3">
+        <div>
+        <div class="float-left text-dark">
+          <h6 >Descripción de carros</h6>
+        </div>
+
+          <div class="mb-3 float-right">
+            <button type="button" class="btn btn-sm btn-outline-primary">Agregar carro</button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="float-left">
+            <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
               </div>
               <input type="text" class="form-control" placeholder="Tipo de carro" aria-label="Username"
                 aria-describedby="basic-addon1">
             </div>
+          </div>
+  
+          <div class="float-right">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
+              </div>
+              <input type="text" class="form-control" placeholder="Número de placa" aria-label="Username" aria-describedby="basic-addon1">
             </div>
-
-            <div class="float-right">
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Número de placa" aria-label="Username"
-                      aria-describedby="basic-addon1">
-                  </div>
-                  </div>
-
+          </div>
+          <div class="clearfix dark"><hr><br></div>
+        
 
         <div class="float-left">
           <div class="input-group mb-3">
@@ -43,30 +54,38 @@
         </div>
 
         <div class="float-right">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
-              </div>
-              <input type="text" class="form-control" placeholder="Hora de salida" aria-label="Username"
-                aria-describedby="basic-addon1">
-            </div>
-          </div>
-
           <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-stopwatch"></i></span>
-              </div>
-              <input type="text" class="form-control" placeholder="Tiempo contratado" aria-label="Username"
-                aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
             </div>
+            <input type="text" class="form-control" placeholder="Hora de salida" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+        </div>
 
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
-                </div>
-                <input type="text" class="form-control" placeholder="Observaciones" aria-label="Username"
-                  aria-describedby="basic-addon1">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-stopwatch"></i></span>
+          </div>
+          <!-- <div class=""> -->
+              <button class="form-control dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-describedby="basic-addon1" aria-haspopup="true" aria-expanded="false">
+                Tiempo contratado
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">2 horas</a>
+                <a class="dropdown-item" href="#">3 horas</a>
+                <a class="dropdown-item" href="#">12 horas</a>
               </div>
+            <!-- </div> -->
+          <!-- <input type="text" class="form-control" placeholder="Tiempo contratado" aria-label="Username"
+            aria-describedby="basic-addon1"> -->
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
+          </div>
+          <input type="text" class="form-control" placeholder="Observaciones" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
 
       </div>
       <div class="modal-footer">
