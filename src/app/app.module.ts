@@ -14,6 +14,8 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { AuthGuard } from './shared/auth-guard/auth-guard.service';
 import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-room-modal.component';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-roo
     EmployeesComponent,
     RoomsComponent,
     AddRoomModalComponent,
+    ArticlesComponent,
+    BuyModalComponent,
   ],
   imports: [
     BrowserModule,
