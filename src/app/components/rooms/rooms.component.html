@@ -80,7 +80,7 @@
       </div>
     </div>
   -->
-    <div class="col-sm-6 col-lg-4" *ngFor="let cabin of cabins">
+    <div class="col-sm-6 col-lg-4" *ngFor="let cabin of cabins; index as i">
       <div class="card text-gray bg-white">
         <div class="card-body pb-0">
 
@@ -90,10 +90,11 @@
                 </button>
     
                 <div aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right dropdown-menu-lg" style="left: auto; right: 0px; top: 100%; transform: translateY(0px);">
-                  <div class="dropdown-header text-lefts"><strong>Estado</strong></div><a class="dropdown-item" href="#"><i
-                      class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a><a
-                    class="dropdown-item" href="#"><i class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i>
-                    En uso </a><a class="dropdown-item" href="#"><i class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En
+                  <div class="dropdown-header text-lefts"><strong>Estado</strong></div>
+
+                  <a class="dropdown-item" (click)="updateCabin(i, 'available')"><i class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a>
+                  <a class="dropdown-item" (click)="updateCabin(i, 'unavailable')"><i class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i>En uso </a>
+                  <a class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En
                     mantenimiento </a>
     
                 </div>
@@ -105,9 +106,14 @@
 
           <div class="buttons">
             <add-room-modal *ngIf="cabin.status == 'available'"></add-room-modal>
-            <button *ngIf="false" type="button" class="btn btn-sm btn-primary">Ver información</button>
-            <button *ngIf="false" type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
-            <button type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
+            <button *ngIf="cabin.status == 'available'" type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
+
+            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-primary">Ver información</button>
+            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-outline-primary">Objetos perdidos</button>
+
+            
+            <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
+            <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-outline-secondary ">Objetos perdidos</button>
           </div>
         </div>
 

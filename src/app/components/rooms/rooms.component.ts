@@ -26,4 +26,14 @@ export class RoomsComponent implements OnInit {
     });
   }
 
+  updateCabin(index: number, status: string){
+    let cabin = this.cabins[index];
+    cabin.status = status;
+    
+    this.cabinService.updateCabin(cabin)
+    .subscribe(data => {
+      console.log(data);
+    });
+  }
+
 }
