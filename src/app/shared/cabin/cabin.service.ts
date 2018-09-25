@@ -20,7 +20,7 @@ export class CabinService {
   }
 
   updateCabin(cabin: Cabin){
-    return this._http.put(Config.cabin_url+Config.cabin_base+"/cabins", cabin, httpOptions).pipe();
+    return this._http.put(Config.cabin_url+Config.cabin_base+"/cabins/"+cabin.id, cabin, httpOptions).pipe();
   }
 }
 
