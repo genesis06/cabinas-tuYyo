@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy, CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 
 import { ModalModule} from 'ngx-bootstrap/modal';
@@ -28,6 +29,7 @@ import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-roo
     CommonModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     ModalModule.forRoot()
   ],
   providers: [
