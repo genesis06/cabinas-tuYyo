@@ -31,6 +31,12 @@
             </a>
           </li>
 
+          <li class="nav-item" routerLink="/incomes" [class.selected]="router.url === '/incomes'">
+            <a class="nav-link  white">
+              <i class="icon cui-dollar"></i> Ganancias
+            </a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link  white" (click)="logout()">
               <i class="icon cui-settings"></i> Cerrar sesión

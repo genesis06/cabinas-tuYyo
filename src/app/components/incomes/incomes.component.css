@@ -1,0 +1,16 @@
+.card{
+    height: 100px;
+}
+
+.col-sm-2{
+    max-width: 12.5% !important;
+}
+
+.text-value{
+    font-size: 18px;
+}
+
+.btn{
+    margin-bottom: 2em;
+    margin-top: 20px;
+}

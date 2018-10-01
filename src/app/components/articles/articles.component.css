@@ -5,3 +5,7 @@
 tr{
     width: 20%;
 }
+
+.dropdown-toggle::after{
+    color: transparent;
+}

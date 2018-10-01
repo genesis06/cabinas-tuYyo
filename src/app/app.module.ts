@@ -16,6 +16,7 @@ import { AuthGuard } from './shared/auth-guard/auth-guard.service';
 import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-room-modal.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.component';
+import { IncomesComponent } from './components/incomes/incomes.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.com
     AddRoomModalComponent,
     ArticlesComponent,
     BuyModalComponent,
+    IncomesComponent,
   ],
   imports: [
     BrowserModule,
