@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinService } from '../../shared/cabin/cabin.service';
 import { Cabin } from '../../models/cabin';
+import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'app-rooms',
@@ -16,6 +17,8 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit() {
     this.getCabins();
+    let c = JSON.stringify(new Date());
+    console.log(new Date(JSON.parse(c)));
   }
 
   getCabins(){

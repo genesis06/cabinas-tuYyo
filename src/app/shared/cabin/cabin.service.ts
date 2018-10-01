@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Config } from '../config';
-import { Http } from '@angular/http';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Cabin } from '../../models/cabin';
 
