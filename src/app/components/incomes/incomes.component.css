@@ -1,5 +1,5 @@
 .card{
-    height: 100px;
+    height: 115px;
 }
 
 .col-sm-2{
@@ -13,4 +13,16 @@
 .btn{
     margin-bottom: 2em;
     margin-top: 20px;
+}
+
+th{
+    width: 14.295%;
+}
+
+hr{
+    margin: 8px 0px;
+}
+
+.line{
+    margin: 2em 0;
 }

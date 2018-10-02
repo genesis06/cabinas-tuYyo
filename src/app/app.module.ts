@@ -17,6 +17,7 @@ import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-roo
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.component';
 import { IncomesComponent } from './components/incomes/incomes.component';
+import { AddIncomeModalComponent } from './components/incomes/add-income-modal/add-income-modal.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { IncomesComponent } from './components/incomes/incomes.component';
     ArticlesComponent,
     BuyModalComponent,
     IncomesComponent,
+    AddIncomeModalComponent,
   ],
   imports: [
     BrowserModule,
