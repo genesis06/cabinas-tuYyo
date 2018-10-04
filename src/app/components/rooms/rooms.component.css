@@ -1,0 +1,63 @@
+.number{
+    font-size: 30px;
+}
+
+.available {
+    background-color: rgb(83, 83, 83);
+}
+
+.available-color{
+    color: rgb(83, 83, 83);
+}
+
+.inUse{
+    background-color: #d25051;
+}
+
+.inUse-color{
+    color: #d25051;
+}
+
+.text-gray{
+    color: gray;
+}
+
+.progress{
+    background-color: #e2e2e2;
+    height: 8px;
+}
+
+.types{
+    padding-bottom: 1em;
+    /* border-bottom: 3px solid #e2e2e2; 
+    margin-bottom: 3em; */
+}
+
+.title{
+    margin: 10px;
+}
+
+.btn{
+    margin-right: 10px;
+}
+
+.buttons{
+    margin-top: 20px;
+}
+
+.pb-0{
+    height: 140px;
+}
+
+h4{
+    margin-bottom: 2em;
+}
+
+hr{
+    margin-bottom: 3em;
+    border: 1px solid #f3f3f3;
+}
+
+.text-value {
+    font-size: 1.2rem;
+}

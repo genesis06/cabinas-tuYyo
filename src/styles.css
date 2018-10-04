@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.container{
+    font-family: 'Open Sans', sans-serif;
+}
+
+.btn-primary{
+    background-color: #ed4357 !important;
+    border-color: #ed4357;
+}
+
+.btn-outline-primary{
+    color: #ed4357 !important;
+    border-color: #ed4357;
+}
+
+.btn-outline-primary:hover{
+    background-color: #ed4357 !important;
+    color: white !important;
+    border-color: #ed4357;
+}
+
+.btn-primary:hover, .bg-primary{
+    background-color: #b62b3b !important;
+    border-color: #b62b3b !important;
+}
+
+
+
+.red{
+   color: #b62b3b !important;
+}
+body{
+    background-color: white;
+}
+.clearfix{
+    clear: both !important;
+}
+
+.header-fixed .app-body{
+    margin-top: 0; 
+}
+
+.container-fluid{
+    margin: 1em;
+    margin-top: 4em;
+}
+
+h4{
+    margin-bottom: 2em;
+    color: #505050;
+}
+
+.search{
+    margin-bottom: 1.5em;
+}
+
+.table td, .table th{
+    border-top: transparent;
+}

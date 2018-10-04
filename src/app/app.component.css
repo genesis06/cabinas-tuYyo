@@ -1,0 +1,41 @@
+.sidebar {
+  width: 200px !important;
+  height: 1000px;
+  background-color: #eaeaea;
+}
+
+.sidebar .nav-link {
+  padding: .75rem 2rem;
+}
+
+.nav-item, .sidebar {
+  color: gray;
+}
+
+.sidebar .nav-link:hover {
+  background-color: #f7f7f7;
+  color: #d25051 !important;
+  cursor: pointer;
+}
+
+.selected, .sidebar .nav-link:active {
+  background-color: white !important;
+  color: #d25051 !important;
+  font-weight: bold !important;
+  cursor: pointer;
+  border-left: 4px solid #d25051;
+}
+
+
+.brand {
+  padding: 20px 44px;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.cui-list{
+  margin-left: 18px;
+}
+
