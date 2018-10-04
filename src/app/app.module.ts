@@ -19,6 +19,7 @@ import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.com
 import { IncomesComponent } from './components/incomes/incomes.component';
 import { AddIncomeModalComponent } from './components/incomes/add-income-modal/add-income-modal.component';
 import { ViewInformationComponent } from './components/rooms/view-information/view-information.component';
+import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/lost-stuff-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ViewInformationComponent } from './components/rooms/view-information/vi
     IncomesComponent,
     AddIncomeModalComponent,
     ViewInformationComponent,
+    LostStuffModalComponent,
   ],
   imports: [
     BrowserModule,

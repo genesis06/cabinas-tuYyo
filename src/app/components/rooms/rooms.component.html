@@ -80,7 +80,7 @@
             <button *ngIf="cabin.status == 'available'" type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
 
             <view-information *ngIf="cabin.status == 'unavailable'"></view-information >
-            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-outline-primary">Objetos perdidos</button>
+            <lost-stuff-modal *ngIf="cabin.status == 'unavailable'"></lost-stuff-modal>
 
             
             <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
