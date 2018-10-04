@@ -18,10 +18,8 @@ export class AddRoomModalComponent implements OnInit {
 
   public contractedTimes: Array<number> = [2, 3, 12];
   public vehicules: Array<Vehicule> = [];
-  public checkIn: Date;
-  public checkOut: Date;
+  public checkIn: string;
   public selectedTime: number;
-  public observations: string;
 
   public rent: Rent;
 
@@ -55,6 +53,7 @@ export class AddRoomModalComponent implements OnInit {
     this.addVehicule();
     //---
     this.selectedTime = undefined;
+    this.checkIn = undefined;
     this.rent = new Rent();
   }
 
@@ -70,9 +69,23 @@ export class AddRoomModalComponent implements OnInit {
     this.rent.cabinID = this.cabinID;
     this.rent.vehicules = this.vehicules;
     this.rent.contractedTime = this.selectedTime;
+    this.rent.checkIn = this.getCheckInDate();
+    console.log(this.rent);
+  }
+
+  getCheckInDate(){
+    let date = new Date();
+
+    if(this.checkIn != undefined){
+      date.setHours(this.getHours());
+      date.setMinutes(this.getMinutes());
+    }
+    console.log(date);
+    return JSON.stringify(date);
   }
 
   addRent(){
+    
     this.getRentInformation();
     this.rentService.createRent(this.rent)
       .subscribe(
@@ -91,6 +104,16 @@ export class AddRoomModalComponent implements OnInit {
 
   refreshed(){
     this.refresh.emit(true);
+  }
+
+  getHours(): number{
+    let time = this.checkIn.split(":");
+    return Number(time[0]);
+  }
+
+  getMinutes(): number{
+    let time = this.checkIn.split(":");
+    return Number(time[1]);
   }
 
 }

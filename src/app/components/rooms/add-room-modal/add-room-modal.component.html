@@ -38,7 +38,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="vehicule.licensePlate" placeholder="Número de placa" aria-label="Username" aria-describedby="basic-addon1">
+              <input type="text" class="form-control" [(ngModel)]="vehicule.license_plate" placeholder="Número de placa" aria-label="Username" aria-describedby="basic-addon1">
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
             </div>
-            <input type="time" class="form-control" id="time" placeholder="Hora de entrada" aria-label="Username"
+            <input type="time" [(ngModel)]="checkIn" class="form-control" id="time" placeholder="Hora de entrada" aria-label="Username"
               aria-describedby="basic-addon1">
           </div>
         </div>
