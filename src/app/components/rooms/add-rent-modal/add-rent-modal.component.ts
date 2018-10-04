@@ -5,12 +5,12 @@ import { RentService } from '../../../shared/rent/rent.service';
 import { Rent } from '../../../models/rent';
 
 @Component({
-  selector: 'add-room-modal',
-  templateUrl: './add-room-modal.component.html',
-  styleUrls: ['./add-room-modal.component.css'],
+  selector: 'add-rent-modal',
+  templateUrl: './add-rent-modal.component.html',
+  styleUrls: ['./add-rent-modal.component.css'],
   providers: [RentService]
 })
-export class AddRoomModalComponent implements OnInit {
+export class AddRentModalComponent implements OnInit {
 
   @ViewChild('lgModal') public lgModal:ModalDirective;
   

@@ -76,10 +76,10 @@
           <small class="text-muted">{{ cabin.status }}</small>
 
           <div class="buttons">
-            <add-room-modal *ngIf="cabin.status == 'available'"[cabin]="cabin.id"></add-room-modal>
+            <add-rent-modal *ngIf="cabin.status == 'available'"[cabin]="cabin.id"></add-rent-modal>
             <button *ngIf="cabin.status == 'available'" type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
 
-            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-primary">Ver información</button>
+            <view-information *ngIf="cabin.status == 'unavailable'"></view-information >
             <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-outline-primary">Objetos perdidos</button>
 
             
