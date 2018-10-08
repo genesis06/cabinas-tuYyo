@@ -13,17 +13,10 @@
     </thead>
     <tbody>
 
-      <tr>
+
+      <tr *ngFor="let articule of articules">
         <!-- <th scope="row">20</th> -->
-        <td>Condones</td>
-      </tr>
-      <tr>
-        <!-- <th scope="row">2</th> -->
-        <td>Esposas</td>
-      </tr>
-      <tr>
-        <!-- <th scope="row">10</th> -->
-        <td>Lubricante</td>
+        <td>{{ articule.name | titlecase }}</td>
       </tr>
 
 
