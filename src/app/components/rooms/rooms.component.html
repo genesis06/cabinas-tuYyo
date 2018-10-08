@@ -79,7 +79,7 @@
             <add-rent-modal *ngIf="cabin.status == 'available'"[cabin]="cabin.id"></add-rent-modal>
             <button *ngIf="cabin.status == 'available'" type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
 
-            <view-information *ngIf="cabin.status == 'unavailable'"></view-information >
+            <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information >
             <lost-stuff-modal *ngIf="cabin.status == 'unavailable'"></lost-stuff-modal>
 
             

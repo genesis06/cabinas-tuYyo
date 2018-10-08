@@ -28,4 +28,11 @@ export class RentService {
       httpOptions
       );
   }
+
+  getRent(cabinID: number){
+    return this._http.get(
+      Config.cabin_url+Config.cabin_base+"/rents/cabins/"+cabinID, 
+      httpOptions
+      );
+  }
 }
