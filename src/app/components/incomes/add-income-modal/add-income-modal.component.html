@@ -14,18 +14,17 @@
 
         <div>
           <div class="float-left">
-            <label for="date">Selecciones una fecha</label>
+            <label for="date">Seleccione una fecha</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
               </div>
-              <input type="date" id="date" class="form-control"  aria-label="Username"
-                aria-describedby="basic-addon1">
+              <input type="date" id="date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
           </div>
-  
+
           <div class="float-right">
-              <label for="date">Selecciones una hora</label>
+            <label for="date">Seleccione una hora</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
@@ -35,33 +34,70 @@
           </div>
         </div>
 
-          <div class="clearfix dark"><hr><br></div> 
+        <div class="clearfix dark">
+          <hr><br></div>
 
-        
+
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
           </div>
-          <input type="number" class="form-control" placeholder="Dinero recibido" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="number" class="form-control" placeholder="Dinero recibido" aria-label="Username"
+            aria-describedby="basic-addon1">
         </div>
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
           </div>
-          <input type="number" class="form-control"  placeholder="Dinero entregado" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username"
+            aria-describedby="basic-addon1">
         </div>
 
-        <button type="button" class="btn btn-outline-primary margin-bottom">Insertar desglose de billetes</button>
+        <br>
+        <h6> Desglose de billetes</h6>
+        <hr>
+        <div class="col-md-12">
+          <div class="float-left">
+            <label class="text-muted" for="mil">1 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
 
-      </div>
+          <div class="float-left">
+            <label class="text-muted" for="mil">2 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cancelar</button>
-        <button type="button" class="btn btn-sm btn-primary" (click)="addRent()">Aceptar</button>
+
+          <div class="float-left">
+            <label class="text-muted" for="mil">5 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
+
+          <div class="float-left">
+            <label class="text-muted" for="mil">10 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
+
+          <div class="float-left">
+            <label class="text-muted" for="mil">20 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
+
+          <div class="float-left">
+            <label class="text-muted" for="mil">50 000 colones</label>
+            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+          </div>
+          <!-- <button type="button" class="btn btn-outline-primary margin-bottom">Insertar desglose de billetes</button> -->
+        </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cancelar</button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="addRent()">Aceptar</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<button type="button" class="btn btn-outline-primary margin" (click)="showModal()">Cambio de turno</button>
+  <button type="button" class="btn btn-outline-primary margin" (click)="showModal()">Cambio de turno</button>
