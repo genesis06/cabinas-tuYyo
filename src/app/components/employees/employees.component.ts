@@ -1,15 +1,32 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/user/user.service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
-  styleUrls: ['./employees.component.css']
+  styleUrls: ['./employees.component.css'],
+  providers: [UserService]
 })
 export class EmployeesComponent implements OnInit {
 
-  constructor() { }
+  public users: Array<User>;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.getUsers();
   }
+
+  getUsers(){
+    this.userService.getUsers()
+    .subscribe(users => {
+      this.users = users;
+    //  console.log(new Date(JSON.parse(users[0].start_time)));
+      console.log(users);
+    });
+  }
+
+  
 
 }

@@ -4,9 +4,7 @@ import { Articule } from '../../models/articule';
 import { Config } from '../config';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ArticuleService {
 
   constructor(private _http: HttpClient) { }

@@ -21,43 +21,11 @@
     </thead>
     <tbody>
 
-      <tr>
-        <th scope="row">1</th>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>201230245</td>
-        <td>Día</td>
-        <td>
-          <a class="btn success" href="#">
-            <i class="icon cui-pencil"></i>
-          </a>
-          <a class="btn red" href="#">
-            <i class="icon cui-trash"></i>
-          </a>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">2</th>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>201230245</td>
-        <td>Día</td>
-        <td>
-          <a class="btn success" href="#">
-            <i class="icon cui-pencil"></i>
-          </a>
-          <a class="btn red" href="#">
-            <i class="icon cui-trash"></i>
-          </a>
-        </td>
-      </tr>
-
-      <tr>
-        <th scope="row">3</th>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>201230245</td>
+      <tr *ngFor="let user of users; index as i ">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.username }}</td>
         <td>Día</td>
         <td>
           <a class="btn success" href="#">
