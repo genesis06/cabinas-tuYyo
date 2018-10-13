@@ -35,4 +35,20 @@ export class RentService {
       httpOptions
       );
   }
+
+  updateRent(rent: Rent){
+    return this._http.put(
+      Config.cabin_url+Config.cabin_base+"/rents/"+rent.ID, 
+      JSON.stringify({
+        id: rent.ID,
+        cabin_id: rent.cabinID,
+        check_in: rent.checkIn,
+        contracted_time: rent.contractedTime,
+        vehicules: rent.vehicules,
+        observations: rent.observations,
+        necessary_repairs: rent.necessaryRepairs
+      }), 
+      httpOptions
+      );
+  }
 }

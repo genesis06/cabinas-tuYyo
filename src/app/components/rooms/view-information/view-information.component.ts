@@ -55,6 +55,22 @@ export class ViewInformationComponent implements OnInit {
       );
   }
 
+  updateRent(){
+    this.rentService.updateRent(this.rent)
+      .subscribe(
+          (data) => {
+            console.log(data);
+            this.resetValues();
+            this.hideModal();
+          },
+          (error) => {
+              console.info("response error "+JSON.stringify(error,null,4));
+              this.resetValues();
+              this.hideModal();
+          }
+      );
+  }
+
 
   resetValues(){
     this.rent = new Rent();
