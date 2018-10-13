@@ -4,7 +4,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Compra de artículos</h5>
+        <h5 class="modal-title">Venta de artículos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -23,22 +23,20 @@
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-stopwatch"></i></span>
           </div>
               <button class="form-control dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-describedby="basic-addon1" aria-haspopup="true" aria-expanded="false">
-                Artículos
+                {{ selectedArticule ? selectedArticule.name : 'Artículos'}}
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">2 horas</a>
-                <a class="dropdown-item" href="#">3 horas</a>
-                <a class="dropdown-item" href="#">12 horas</a>
+                <a class="dropdown-item" *ngFor="let articule of articules; index as i" (click)="changeArticule(i)">{{ articule.name }}</a>
               </div>
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cancelar</button>
-        <button type="button" class="btn btn-sm btn-primary" (click)="hideModal()">Hacer compra</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="saleArticule()">Realizar venta</button>
       </div>
     </div>
   </div>
 </div>
 
-<button type="button" class="btn btn-outline-primary float-right"(click)="showModal()"><i class="icon cui-basket-loaded"></i>Hacer compra</button>
+<button type="button" class="btn btn-outline-primary float-right"(click)="showModal()"><i class="icon cui-basket-loaded"></i>Realizar venta</button>
