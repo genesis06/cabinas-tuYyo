@@ -11,6 +11,8 @@ export class LostStuffModalComponent implements OnInit {
   
   public isModal:boolean = false;
 
+  public observations: string;
+
   constructor() {
    }
 
