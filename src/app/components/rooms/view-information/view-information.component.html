@@ -11,29 +11,30 @@
       </div>
 
       <div class="modal-body">
+        <div *ngFor="let vehicule of rent.vehicules">
+          <div class="input-group">
+              <div><i class="fa fa-car iconColor"></i></div> <span class="text-dark margin-right">Número de placa: </span> <p class="text-muted">{{ vehicule.license_plate }}</p>
+          </div>
 
-       <div class="input-group">
-            <div><i class="fa fa-car iconColor"></i></div> <span class="text-dark margin-right">Número de placa: </span> <p class="text-muted">20394842</p>
+          <div class="input-group">
+              <div><i class="fa fa-car iconColor"></i></div> <span class="text-dark margin-right">Tipo de carro: </span> <p class="text-muted">{{ vehicule.type }}</p>
+          </div>
         </div>
 
         <div class="input-group">
-            <div><i class="fa fa-car iconColor"></i></div> <span class="text-dark margin-right">Tipo de carro: </span> <p class="text-muted">Automovil</p>
+            <div><i class="fa fa-clock iconColor"></i></div> <span class="text-dark margin-right">Hora de entrada: </span> <p class="text-muted">{{ rent.checkIn | date:"dd/MM/yy - h:mm a "}}</p>
         </div>
 
         <div class="input-group">
-            <div><i class="fa fa-clock iconColor"></i></div> <span class="text-dark margin-right">Hora de entrada: </span> <p class="text-muted">10:00 pm</p>
+            <div><i class="fa fa-stopwatch iconColor"></i></div> <span class="text-dark margin-right">Tiempo contratado: </span> <p class="text-muted">{{ rent.contractedTime + ' horas'}}</p>
         </div>
 
         <div class="input-group">
-            <div><i class="fa fa-stopwatch iconColor"></i></div> <span class="text-dark margin-right">Tiempo contratado: </span> <p class="text-muted">2 horas</p>
+            <div><i class="fa fa-sticky-note iconColor"></i></div> <span class="text-dark margin-right">Observaciones: </span> <p class="text-muted">{{ rent.observations ? rent.observations : 'No hay'}}</p>
         </div>
 
         <div class="input-group">
-            <div><i class="fa fa-sticky-note iconColor"></i></div> <span class="text-dark margin-right">Observaciones: </span> <p class="text-muted">No hay</p>
-        </div>
-
-        <div class="input-group">
-            <div><i class="fa fa-wrench iconColor"></i></div> <span class="text-dark margin-right">Reparaciones necesarias: </span> <p class="text-muted">Ninguna</p>
+            <div><i class="fa fa-wrench iconColor"></i></div> <span class="text-dark margin-right">Reparaciones necesarias: </span> <p class="text-muted">{{ rent.necessaryRepairs ? rent.necessaryRepairs : 'Ninguna'}}</p>
         </div>
 
 

@@ -6,8 +6,8 @@ export class Rent{
     public cabinID: number;
     public contractedTime: number;
     public vehicules: Array<any>;
-    public checkIn: string;
-    public checkOut: string;
+    public checkIn: any;
+    public checkOut: any;
     public necessaryRepairs: string;
     public observations: string;
 
@@ -27,8 +27,8 @@ export class Rent{
         this.cabinID = rent.cabin_id;
         this.contractedTime = rent.contracted_time;
         this.vehicules = rent.vehicules;
-        this.checkIn = rent.check_in;
-        this.checkOut = rent.check_out;
+        this.checkIn = new Date(rent.check_in);
+        this.checkOut = new Date(rent.check_out);
         this.necessaryRepairs = rent.necessary_repairs;
         this.observations = rent.observations;
 
