@@ -20,6 +20,7 @@ import { IncomesComponent } from './components/incomes/incomes.component';
 import { AddIncomeModalComponent } from './components/incomes/add-income-modal/add-income-modal.component';
 import { ViewInformationComponent } from './components/rooms/view-information/view-information.component';
 import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/lost-stuff-modal.component';
+import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/los
     AddIncomeModalComponent,
     ViewInformationComponent,
     LostStuffModalComponent,
+    CheckoutModalComponent,
   ],
   imports: [
     BrowserModule,

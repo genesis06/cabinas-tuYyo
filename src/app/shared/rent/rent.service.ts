@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vehicule } from '../../models/vehicule';
 import { Rent } from '../../models/rent';
+import { Cabin } from 'src/app/models/cabin';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -48,6 +49,19 @@ export class RentService {
         observations: rent.observations,
         necessary_repairs: rent.necessaryRepairs
       }), 
+      httpOptions
+      );
+  }
+
+  checkout(cabin: Cabin){
+    
+    return this._http.put(
+      Config.cabin_url+Config.cabin_base+"/cabins/"+cabin.id+"/rents/checkout", 
+      {
+        id: cabin.id,
+        cabin_number: cabin.cabin_number,
+        check_out: JSON.stringify(new Date())
+      }, 
       httpOptions
       );
   }

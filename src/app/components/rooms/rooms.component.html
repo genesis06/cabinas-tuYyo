@@ -66,7 +66,7 @@
                   <a class="dropdown-item" (click)="updateCabin(i, 'available')"><i class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a>
                   <a class="dropdown-item" (click)="updateCabin(i, 'unavailable')"><i class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i>En uso </a>
                   <a class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En mantenimiento </a>
-                  <a *ngIf="cabin.status == 'unavailable'" class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-sign-out-alt checkout-color"></i>Checkout </a>
+                 <!-- <a *ngIf="cabin.status == 'unavailable'" class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-sign-out-alt checkout-color"></i>Checkout </a>-->
 
     
                 </div>
@@ -78,8 +78,10 @@
 
           <div class="buttons">
             <add-rent-modal *ngIf="cabin.status == 'available'"[cabin]="cabin.id"></add-rent-modal>
+            
 
-            <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information >
+            <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabinID"></view-information >
+            <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin"></checkout-modal>
 
             
             <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>

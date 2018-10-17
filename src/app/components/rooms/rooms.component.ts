@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinService } from '../../shared/cabin/cabin.service';
 import { Cabin } from '../../models/cabin';
-import { Console } from '@angular/core/src/console';
 
 @Component({
   selector: 'app-rooms',
@@ -38,5 +37,7 @@ export class RoomsComponent implements OnInit {
       console.log(data);
     });
   }
+
+  
 
 }
