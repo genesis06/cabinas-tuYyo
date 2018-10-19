@@ -37,6 +37,12 @@
             </a>
           </li>
 
+          <li class="nav-item" routerLink="/report" [class.selected]="router.url === '/report'">
+            <a class="nav-link  white">
+              <i class="icon cui-note"></i> Reporte
+            </a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link  white" (click)="logout()">
               <i class="icon cui-settings"></i> Cerrar sesión
