@@ -50,8 +50,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
           </div>
-          <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username"
-            aria-describedby="basic-addon1">
+          <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username" aria-describedby="basic-addon1" value="{{ sumBills() }}">
         </div>
 
         <br>
@@ -60,33 +59,33 @@
         <div class="col-md-12">
           <div class="float-left">
             <label class="text-muted" for="mil">1 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill1000" id="mil" type="number" >
           </div>
 
           <div class="float-left">
             <label class="text-muted" for="mil">2 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill2000" id="mil" type="number" >
           </div>
 
 
           <div class="float-left">
             <label class="text-muted" for="mil">5 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill5000" id="mil" type="number" >
           </div>
 
           <div class="float-left">
             <label class="text-muted" for="mil">10 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill10000" id="mil" type="number" >
           </div>
 
           <div class="float-left">
             <label class="text-muted" for="mil">20 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill20000" id="mil" type="number" >
           </div>
 
           <div class="float-left">
             <label class="text-muted" for="mil">50 000 colones</label>
-            <input class="input-group-text billetes" id="mil" type="number" placeholder="00">
+            <input class="input-group-text billetes" [(ngModel)]="bill50000" id="mil" type="number" >
           </div>
           <!-- <button type="button" class="btn btn-outline-primary margin-bottom">Insertar desglose de billetes</button> -->
         </div>
