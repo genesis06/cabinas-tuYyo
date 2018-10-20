@@ -12,21 +12,26 @@ export class RoomsComponent implements OnInit {
 
   public cabins: Array<Cabin>;
 
+  public availables: number;
+  public unavailables: number;
+  public maintenance: number;
+
   constructor(private cabinService: CabinService) { }
 
   ngOnInit() {
+    this.initDashboard();
     this.getCabins();
-    let c = JSON.stringify(new Date());
-    console.log(new Date(JSON.parse(c)));
   }
 
   getCabins(){
     this.cabinService.getCabins()
     .subscribe(cabins => {
       this.cabins = cabins
+      this.updateDashboard();
       console.log(cabins);
     });
   }
+
 
   updateCabin(index: number, status: string){
     let cabin = this.cabins[index];
@@ -34,8 +39,30 @@ export class RoomsComponent implements OnInit {
     
     this.cabinService.updateCabin(cabin)
     .subscribe(data => {
+      this.initDashboard();
+      this.updateDashboard();
       console.log(data);
     });
+  }
+
+  initDashboard(){
+    this.availables = 0;
+    this.unavailables = 0;
+    this.maintenance = 0;
+  }
+
+  updateDashboard(){
+    this.cabins.forEach(cabin =>{
+      if(cabin.status == 'available'){
+        this.availables += 1;
+      }
+      else if(cabin.status == 'unavailable'){
+        this.unavailables += 1;
+      }
+      else if(cabin.status == 'maintenance'){
+        this.maintenance += 1;
+      }
+    })
   }
 
   

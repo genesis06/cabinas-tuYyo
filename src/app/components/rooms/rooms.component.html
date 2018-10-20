@@ -4,7 +4,7 @@
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">80</div>
+        <div class="h4 m-0">{{ availables }}</div>
         <div>Disponibles</div>
         <div class="progress progress-xs my-3">
           <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
@@ -15,7 +15,7 @@
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">2</div>
+        <div class="h4 m-0">{{ maintenance }}</div>
         <div>En proceso de entrega</div>
         <div class="progress progress-xs my-3">
           <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar available" role="progressbar"
@@ -26,7 +26,7 @@
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">20</div>
+        <div class="h4 m-0">{{ unavailables }}</div>
         <div>En uso</div>
         <div class="progress progress-xs my-3">
           <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar inUse" role="progressbar"
