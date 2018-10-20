@@ -21,6 +21,7 @@ import { AddIncomeModalComponent } from './components/incomes/add-income-modal/a
 import { ViewInformationComponent } from './components/rooms/view-information/view-information.component';
 import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/lost-stuff-modal.component';
 import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { CheckoutModalComponent } from './components/rooms/checkout-modal/checko
     ViewInformationComponent,
     LostStuffModalComponent,
     CheckoutModalComponent,
+    ReportComponent,
   ],
   imports: [
     BrowserModule,

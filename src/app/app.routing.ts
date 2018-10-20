@@ -5,6 +5,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { IncomesComponent } from './components/incomes/incomes.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 import { AuthGuard } from './shared/auth-guard/auth-guard.service';
@@ -17,7 +18,8 @@ export const routes: Routes = [
   { path: 'employees', component: EmployeesComponent , canActivate: [AuthGuard]},
   { path: 'rooms', component: RoomsComponent , canActivate: [AuthGuard]},
   { path: 'articles', component: ArticlesComponent },
-  { path: 'incomes', component: IncomesComponent }
+  { path: 'incomes', component: IncomesComponent },
+  { path: 'report', component: ReportComponent }
 ];
 
 
