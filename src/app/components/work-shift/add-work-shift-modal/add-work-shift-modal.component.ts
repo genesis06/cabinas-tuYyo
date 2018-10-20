@@ -1,12 +1,14 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 
 @Component({
-  selector: 'add-income-modal',
-  templateUrl: './add-income-modal.component.html',
-  styleUrls: ['./add-income-modal.component.css']
+  selector: 'add-work-shift-modal',
+  templateUrl: './add-work-shift-modal.component.html',
+  styleUrls: ['./add-work-shift-modal.component.css'],
+  providers: [WorkShiftService]
 })
-export class AddIncomeModalComponent implements OnInit {
+export class AddWorkShiftModalComponent implements OnInit {
   @ViewChild('lgModal') public lgModal:ModalDirective;
   
   public isModal:boolean = false;
@@ -18,7 +20,7 @@ export class AddIncomeModalComponent implements OnInit {
   public bill20000: number;
   public bill50000: number;
 
-  constructor() {
+  constructor(private workShiftService: WorkShiftService) {
    }
 
   ngOnInit() {
@@ -39,6 +41,25 @@ export class AddIncomeModalComponent implements OnInit {
     let sumBill50000 = this.bill50000*50000;
     
     return  sumBill1000+ sumBill2000+ sumBill5000+ sumBill10000+ sumBill20000+ sumBill50000;
+  }
+
+  createWorkShift(){
+
+    let moneyReceived = this.sumBills();
+    
+    this.workShiftService.createWorkShift(moneyReceived, "702230639")
+      .subscribe(
+          (data) => {
+            console.log(data);
+           // this.resetValues();
+            this.hideModal();
+          },
+          (error) => {
+              console.info("response error "+JSON.stringify(error,null,4));
+             // this.resetValues();
+              this.hideModal();
+          }
+      );
   }
 
 

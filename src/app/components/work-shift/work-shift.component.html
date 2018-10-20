@@ -90,7 +90,7 @@
   <hr class="line"> -->
 
   <h4>Cambios de turno</h4>
-  <add-income-modal></add-income-modal>
+  <add-work-shift-modal></add-work-shift-modal>
 
 
   <div class="input-group search">
@@ -110,39 +110,24 @@
         <th scope="col">Apellido</th>
         <th scope="col">Dinero recibido</th>
         <th scope="col">Dinero entregado</th>
+        <th scope="col">Editar</th>
       </tr>
     </thead>
     <tbody>
 
-      <tr>
-        <th scope="row">22/06/2010</th>
-        <td>10:30 am</td>
-        <td>201230245</td>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>20000</td>
-        <td>30000</td>
+      <tr *ngFor="let workShift of workShifts">
+        <th scope="row">{{ workShift.date_time | date:"MM/dd/yy"}}</th>
+        <td>{{ workShift.date_time | date:"h:mm a "}}</td>
+        <td>{{ workShift.username }}</td>
+        <td>{{ workShift.first_name }}</td>
+        <td>{{ workShift.last_name }}</td>
+        <td>{{ workShift.money_received }}</td>
+        <td>{{ workShift.money_delivered }}</td>
+        <td>
+          <edit-work-shift-modal [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
+        </td>
       </tr>
 
-      <tr>
-        <th scope="row">22/06/2010</th>
-        <td>10:30 am</td>
-        <td>201230245</td>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>20000</td>
-        <td>30000</td>
-      </tr>
-
-      <tr>
-        <th scope="row">22/06/2010</th>
-        <td>10:30 am</td>
-        <td>201230245</td>
-        <td>Carlos</td>
-        <td>Rodríguez</td>
-        <td>20000</td>
-        <td>30000</td>
-      </tr>
 
 
 

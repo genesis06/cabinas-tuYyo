@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddIncomeModalComponent } from './add-income-modal.component';
+import { WorkShiftComponent } from './work-shift.component';
 
-describe('AddIncomeModalComponent', () => {
-  let component: AddIncomeModalComponent;
-  let fixture: ComponentFixture<AddIncomeModalComponent>;
+describe('IncomesComponent', () => {
+  let component: WorkShiftComponent;
+  let fixture: ComponentFixture<WorkShiftComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddIncomeModalComponent ]
+      declarations: [ WorkShiftComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddIncomeModalComponent);
+    fixture = TestBed.createComponent(WorkShiftComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

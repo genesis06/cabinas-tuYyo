@@ -12,49 +12,16 @@
 
       <div class="modal-body">
 
-        <!-- <div>
-          <div class="float-left">
-            <label for="date">Seleccione una fecha</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
-              </div>
-              <input type="date" id="date" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-          </div>
-
-          <div class="float-right">
-            <label for="date">Seleccione una hora</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
-              </div>
-              <input type="time" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-          </div>
-        </div>-->
-
-        <div class="clearfix dark">
-          <hr><br></div>
-
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
           </div>
-          <input type="number" class="form-control" placeholder="Dinero recibido" aria-label="Username"
-            aria-describedby="basic-addon1">
-        </div>
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
-          </div>
-          <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username" aria-describedby="basic-addon1" value="{{ sumBills() }}">
+          <input type="number" class="form-control" placeholder="Dinero recibido" value="{{ sumBills() }}">
         </div>
 
         <br>
-        <h6> Desglose de billetes</h6>
+        <h6> Conteo de billetes</h6>
         <hr>
         <div class="col-md-12">
           <div class="float-left">
@@ -93,7 +60,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cancelar</button>
-          <button type="button" class="btn btn-sm btn-primary" (click)="addRent()">Aceptar</button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="createWorkShift()">Aceptar</button>
         </div>
       </div>
     </div>

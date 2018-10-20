@@ -16,12 +16,13 @@ import { AuthGuard } from './shared/auth-guard/auth-guard.service';
 import { AddRentModalComponent } from './components/rooms/add-rent-modal/add-rent-modal.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.component';
-import { IncomesComponent } from './components/incomes/incomes.component';
-import { AddIncomeModalComponent } from './components/incomes/add-income-modal/add-income-modal.component';
+import { WorkShiftComponent } from './components/work-shift/work-shift.component';
+import { AddWorkShiftModalComponent } from './components/work-shift/add-work-shift-modal/add-work-shift-modal.component';
 import { ViewInformationComponent } from './components/rooms/view-information/view-information.component';
 import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/lost-stuff-modal.component';
 import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
 import { ReportComponent } from './components/report/report.component';
+import { EditWorkShiftModalComponent } from './components/work-shift/edit-work-shift-modal/edit-work-shift-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +33,13 @@ import { ReportComponent } from './components/report/report.component';
     AddRentModalComponent,
     ArticlesComponent,
     BuyModalComponent,
-    IncomesComponent,
-    AddIncomeModalComponent,
+    WorkShiftComponent,
+    AddWorkShiftModalComponent,
     ViewInformationComponent,
     LostStuffModalComponent,
     CheckoutModalComponent,
     ReportComponent,
+    EditWorkShiftModalComponent,
   ],
   imports: [
     BrowserModule,
