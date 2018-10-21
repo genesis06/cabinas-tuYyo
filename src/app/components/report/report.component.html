@@ -12,22 +12,18 @@
           <thead class="red">
             <tr>
               <th scope="col">Fecha</th>
-              <th scope="col">Encargado</th>
-              <th scope="col">Turno/th>
-              <th scope="col">Cant cabinas alquiladas </th>
-              <th scope="col">Ganancia en alquiler</th>
-              <th scope="col">Ganancia en ventas</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Monto</th>
             </tr>
           </thead>
           <tbody>
 
-            <tr>
-              <th>Bla</th>
-              <td>Bla</td>
-              <td>Bla</td>
-              <td>Bla</td>
-              <td>Bla</td>
-              <td>Bla</td>
+            <tr *ngFor="let item of report">
+              <th>{{ item.date_time | date:"h:mm a "}}</th>
+              <td>{{ item.description | titlecase }} </td>
+              <td>{{ item.amount }}</td>
+              <td>{{ item.price }}</td>
             </tr>
 
 
@@ -35,6 +31,7 @@
 
           </tbody>
         </table>
+
 
 
       </div>
