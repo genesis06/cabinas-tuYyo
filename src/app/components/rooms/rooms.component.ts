@@ -1,27 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { CabinService } from '../../shared/cabin/cabin.service';
 import { Cabin } from '../../models/cabin';
+import { RentService } from 'src/app/shared/rent/rent.service';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
-  providers: [CabinService]
+  providers: [CabinService, RentService]
 })
 export class RoomsComponent implements OnInit {
 
   public cabins: Array<Cabin>;
+  public lastRents: Array<any>;
 
   public availables: number;
   public unavailables: number;
   public maintenance: number;
 
-  constructor(private cabinService: CabinService) { }
+  constructor(private cabinService: CabinService, private rentService: RentService) { }
 
   ngOnInit() {
     this.initDashboard();
     this.getCabins();
+    this.getRents();
   }
+
+  
 
   getCabins(){
     this.cabinService.getCabins()
@@ -45,6 +50,7 @@ export class RoomsComponent implements OnInit {
     });
   }
 
+
   initDashboard(){
     this.availables = 0;
     this.unavailables = 0;
@@ -65,6 +71,19 @@ export class RoomsComponent implements OnInit {
     })
   }
 
+  getRents(){
+    
+    this.rentService.getRents()
+      .subscribe(
+          (rents) => {
+            this.lastRents = rents;
+            console.log(rents);
+          },
+          (error) => {
+              console.info("response error "+JSON.stringify(error,null,4));
+          }
+      );
+  }
   
 
 }

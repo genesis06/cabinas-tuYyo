@@ -96,7 +96,6 @@
 
                 <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver
                   información</button>
-                <lost-stuff-modal *ngIf="cabin.status == 'maintenance'"></lost-stuff-modal>
               </div>
             </div>
 
@@ -148,18 +147,17 @@
           </thead>
           <tbody>
 
-            <tr>
-              <th>#</th>
-              <td>9:00</td>
-              <td>Bla</td>
-              <td>Bla</td>
+            <tr *ngFor="let rent of lastRents">
+              <th>{{ rent.cabin_number }}</th>
+              <td>{{ rent.check_in | date:"dd-MM-yyyy h:mm a " }}</td>
+              <td>{{ rent. contracted_time }}</td>
+              <td>{{ rent.lost_stuff }}</td>
               <td>
-                <a class="btn success" href="#">
-                  <i class="icon cui-pencil"></i>
-                </a>
-                <a class="btn red" href="#">
+                
+                <lost-stuff-modal></lost-stuff-modal>
+                <!---<a class="btn red" href="#">
                   <i class="icon cui-trash"></i>
-                </a>
+                </a>-->
               </td>
             </tr>
 

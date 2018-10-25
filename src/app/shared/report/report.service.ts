@@ -9,7 +9,9 @@ export class ReportService {
 
   constructor(private _http: HttpClient) { }
 
-  getReport(): Observable<any[]>{
-    return this._http.get<any[]>(Config.cabin_url+Config.cabin_base+"/report").pipe();
+  getReport(fromDate:string, toDate:string): Observable<any[]>{
+
+    console.log((Config.cabin_url+Config.cabin_base+"/report?fromDate="+fromDate+"&toDate="+toDate));
+    return this._http.get<any[]>(Config.cabin_url+Config.cabin_base+"/report?fromDate="+fromDate+"&toDate="+toDate).pipe();
   }
 }

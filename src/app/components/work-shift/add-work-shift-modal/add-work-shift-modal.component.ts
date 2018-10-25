@@ -25,7 +25,7 @@ export class AddWorkShiftModalComponent implements OnInit {
 
   ngOnInit() {
     this.bill1000 = 0;
-    this.bill2000 = 10;
+    this.bill2000 = 0;
     this.bill5000 = 0;
     this.bill10000 = 0;
     this.bill20000 = 0;

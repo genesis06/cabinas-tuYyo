@@ -15,6 +15,13 @@ export class RentService {
 
   constructor(private _http: HttpClient) { }
 
+  getRents(): Observable<any[]>{
+    return this._http.get<any[]>(
+      Config.cabin_url+Config.cabin_base+"/rents?limit=10", 
+      httpOptions
+      );
+  }
+
   createRent(rent: Rent){
     return this._http.post(
       Config.cabin_url+Config.cabin_base+"/rents", 

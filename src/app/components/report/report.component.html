@@ -1,12 +1,25 @@
 <h4>Reporte diario</h4>
       <div>
-        <div class="input-group search">
+        <!--<div class="input-group search">
           <div class="input-group-prepend">
             <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
           </div>
           <input class="form-control" type="text" placeholder="Buscar" aria-label="Input group example"
             aria-describedby="btnGroupAddon">
-        </div>
+        </div>-->
+        <div class="float-left">
+            <label for="date">Seleccione una fecha</label>
+            <div class="input-group mb-3">
+               <div class="input-group-prepend">
+                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+               </div>
+               <input type="date" id="date" class="form-control" [(ngModel)]="date">
+             </div>
+             <div class="input-group mb-3">
+                <button (click)="getReportWithFilter()"> Buscar</button>
+             </div>
+             
+           </div>
 
         <table class="table table-hover">
           <thead class="red">
@@ -20,10 +33,16 @@
           <tbody>
 
             <tr *ngFor="let item of report">
-              <th>{{ item.date_time | date:"h:mm a "}}</th>
+              <th>{{ item.date_time | date:"MM/dd/yy' - 'h:mm a "}}</th>
               <td>{{ item.description | titlecase }} </td>
               <td>{{ item.amount }}</td>
               <td>{{ item.price }}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>TOTAL</td>
+                <td>{{ total }}</td>
             </tr>
 
 
