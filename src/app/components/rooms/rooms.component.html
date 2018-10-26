@@ -90,7 +90,7 @@
                 <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin.id"></add-rent-modal>
 
 
-                <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabinID"></view-information>
+                <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information>
                 <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin"></checkout-modal>
 
 
@@ -154,7 +154,7 @@
               <td>{{ rent.lost_stuff }}</td>
               <td>
                 
-                <lost-stuff-modal></lost-stuff-modal>
+                <lost-stuff-modal [rent]="rent"></lost-stuff-modal>
                 <!---<a class="btn red" href="#">
                   <i class="icon cui-trash"></i>
                 </a>-->

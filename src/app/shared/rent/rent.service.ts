@@ -26,35 +26,35 @@ export class RentService {
     return this._http.post(
       Config.cabin_url+Config.cabin_base+"/rents", 
       JSON.stringify({
-        cabin_id: rent.cabinID,
+        cabin_id: rent.cabin_id,
         check_in: JSON.stringify(new Date()),
-        contracted_time: rent.contractedTime,
+        contracted_time: rent.contracted_time,
         vehicules: rent.vehicules,
         observations: rent.observations,
-        necessary_repairs: rent.necessaryRepairs
+        necessary_repairs: rent.necessary_repairs
       }), 
       httpOptions
       );
   }
 
-  getRent(cabinID: number){
-    return this._http.get(
-      Config.cabin_url+Config.cabin_base+"/rents/cabins/"+cabinID, 
+  getRent(cabinID: number): Observable<Rent>{
+    return this._http.get<Rent>(
+      Config.cabin_url+Config.cabin_base+"/cabins/"+cabinID+"/rent", 
       httpOptions
       );
   }
 
   updateRent(rent: Rent){
     return this._http.put(
-      Config.cabin_url+Config.cabin_base+"/rents/"+rent.ID, 
+      Config.cabin_url+Config.cabin_base+"/rents/"+rent.id, 
       JSON.stringify({
-        id: rent.ID,
-        cabin_id: rent.cabinID,
-        check_in: rent.checkIn,
-        contracted_time: rent.contractedTime,
+        id: rent.id,
+        cabin_id: rent.cabin_id,
+        check_in: rent.check_in,
+        contracted_time: rent.contracted_time,
         vehicules: rent.vehicules,
         observations: rent.observations,
-        necessary_repairs: rent.necessaryRepairs
+        necessary_repairs: rent.necessary_repairs
       }), 
       httpOptions
       );

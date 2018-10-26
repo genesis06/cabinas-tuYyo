@@ -2,36 +2,23 @@ import { Vehicule } from "./vehicule";
 
 export class Rent{
 
-    public ID: number;
-    public cabinID: number;
-    public contractedTime: number;
+    public id: number;
+    public cabin_id: number;
+    public contracted_time: number;
     public vehicules: Array<any>;
-    public checkIn: any;
-    public checkOut: any;
-    public necessaryRepairs: string;
+    public check_in: any;
+    public check_out: any;
+    public necessary_repairs: string;
     public observations: string;
 
     constructor(){
-        this.ID = 0;
-        this.cabinID = 0;
-        this.contractedTime = 0;
+        this.id = 0;
+        this.cabin_id = 0;
+        this.contracted_time = 0;
         this.vehicules = [];
-        this.checkIn = "";
-        this.checkOut = "";
-        this.necessaryRepairs = "";
+        this.check_in = "";
+        this.check_out = "";
+        this.necessary_repairs = "";
         this.observations = "";
-    }
-
-    setInformation(rent: any){
-        this.ID = rent.id;
-        this.cabinID = rent.cabin_id;
-        this.contractedTime = rent.contracted_time;
-        this.vehicules = rent.vehicules;
-        this.checkIn = new Date(rent.check_in);
-        this.checkOut = new Date(rent.check_out);
-        this.necessaryRepairs = rent.necessary_repairs;
-        this.observations = rent.observations;
-
-        console.log(this.vehicules)
     }
 }

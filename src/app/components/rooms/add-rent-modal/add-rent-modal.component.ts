@@ -66,10 +66,10 @@ export class AddRentModalComponent implements OnInit {
   }
 
   getRentInformation(){
-    this.rent.cabinID = this.cabinID;
+    this.rent.cabin_id = this.cabinID;
     this.rent.vehicules = this.vehicules;
-    this.rent.contractedTime = this.selectedTime;
-    this.rent.checkIn = this.getCheckInDate();
+    this.rent.contracted_time = this.selectedTime;
+    this.rent.check_in = this.getCheckInDate();
     console.log(this.rent);
   }
 
