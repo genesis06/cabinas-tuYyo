@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Rent } from '../../../models/rent';
 import { RentService } from '../../../shared/rent/rent.service';
+import { Vehicule } from 'src/app/models/vehicule';
+import * as _ from "lodash";
 
 @Component({
   selector: 'view-information',
@@ -16,6 +18,9 @@ export class ViewInformationComponent implements OnInit {
 
   @Input("cabinID") public cabinID: number;
   public rent = new Rent();
+
+  public vehicules: Array<Vehicule> = [];
+  public contractedTimes: Array<number> = [2, 3, 12];
 
   constructor(private rentService: RentService) {
    }
@@ -45,8 +50,9 @@ export class ViewInformationComponent implements OnInit {
     this.rentService.getRent(this.cabinID)
       .subscribe(
           (data) => {
+            this.rent = data;
+            this.vehicules = _.cloneDeep(this.rent.vehicules);
             console.log(data);
-            this.rent.setInformation(data);
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
@@ -56,6 +62,12 @@ export class ViewInformationComponent implements OnInit {
   }
 
   updateRent(){
+    console.log(this.rent);
+    console.log(this.vehicules);
+    
+    this.updateVehicules();
+    console.log(this.rent.vehicules);
+    
     this.rentService.updateRent(this.rent)
       .subscribe(
           (data) => {
@@ -71,9 +83,20 @@ export class ViewInformationComponent implements OnInit {
       );
   }
 
+  addVehicule(){
+    this.vehicules.push( new Vehicule("",""));
+  }
+
+  changeTime(index: number){
+    this.rent.contracted_time = this.contractedTimes[index];
+  }
+
+  updateVehicules(){
+    this.rent.vehicules = this.vehicules;
+  }
 
   resetValues(){
-    this.rent = new Rent();
+    this.vehicules = [];
   }
 
  
