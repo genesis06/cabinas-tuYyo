@@ -34,19 +34,38 @@
           </div>
         </div>-->
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
-          </div>
-          <input type="number" class="form-control" placeholder="Dinero recibido" [(ngModel)]="newWorkShift.money_received">
+        <div>
+            <label>Dinero recibido</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Dinero recibido" [(ngModel)]="newWorkShift.money_received">
+              </div>
         </div>
+        
 
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
-          </div>
-          <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username" aria-describedby="basic-addon1" value="{{ sumBills() }}">
+        <div>
+            <label>Dinero entregado</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Dinero entregado" aria-label="Username" aria-describedby="basic-addon1" value="{{ sumBills() }}">
+              </div>
         </div>
+        
+
+        <div>
+          <label>Notas</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Notas" [(ngModel)]="newWorkShift.notes">
+              </div>
+        </div>
+        
 
         <br>
         <h6> Desglose de billetes</h6>

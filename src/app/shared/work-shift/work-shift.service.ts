@@ -31,7 +31,8 @@ export class WorkShiftService {
         money_received: workShift.money_received,
         money_delivered: workShift.money_delivered,
         date_time: JSON.stringify(new Date()),
-        username: workShift.username  
+        username: workShift.username,
+        notes: workShift.notes  
       }), 
       httpOptions
       );

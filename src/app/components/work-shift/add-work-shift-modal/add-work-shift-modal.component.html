@@ -12,13 +12,17 @@
 
       <div class="modal-body">
 
-
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
-          </div>
-          <input type="number" class="form-control" placeholder="Dinero recibido" value="{{ sumBills() }}">
+        <div>
+            <label>Dinero recibido</label>
+            <div class="input-group mb-3">
+         
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note"></i></span>
+                </div>
+                <input type="number" class="form-control" placeholder="Dinero recibido" value="{{ sumBills() }}">
+              </div>
         </div>
+        
 
         <br>
         <h6> Conteo de billetes</h6>
