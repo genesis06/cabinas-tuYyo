@@ -73,13 +73,11 @@ export class RentService {
       );
   }
 
-  postLostStuff(rentID: number, description: string){
+  postLostStuff(rent: Rent){
     
     return this._http.put(
-      Config.cabin_url+Config.cabin_base+"/rents/"+rentID+"/lost_stuff", 
-      {
-        description: description
-      }, 
+      Config.cabin_url+Config.cabin_base+"/rents/"+rent.id+"/lost_stuff", 
+      rent, 
       httpOptions
       );
   }

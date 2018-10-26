@@ -85,5 +85,10 @@ export class RoomsComponent implements OnInit {
       );
   }
   
+  onRefresh(refresh){
+    if(refresh){
+     this.getRents();
+    }
+  }
 
 }
