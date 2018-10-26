@@ -84,6 +84,14 @@ export class RoomsComponent implements OnInit {
           }
       );
   }
+
+  onRefreshCabins(refresh){
+
+    console.log("update cabins")
+    if(refresh){
+     this.getCabins();
+    }
+  }
   
   onRefresh(refresh){
     if(refresh){

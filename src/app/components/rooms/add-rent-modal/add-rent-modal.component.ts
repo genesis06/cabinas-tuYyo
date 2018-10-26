@@ -92,7 +92,9 @@ export class AddRentModalComponent implements OnInit {
           (data) => {
             console.log(data);
             this.resetValues();
+            this.refreshed();
             this.hideModal();
+
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
