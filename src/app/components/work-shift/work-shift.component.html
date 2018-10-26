@@ -93,12 +93,19 @@
   <add-work-shift-modal></add-work-shift-modal>
 
 
-  <div class="input-group search">
-    <div class="input-group-prepend">
-      <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
-    </div>
-    <input class="form-control" type="text" placeholder="Fecha" aria-label="Input group example" aria-describedby="btnGroupAddon">
-  </div>
+  <div class="float-left">
+      <label for="date">Seleccione una fecha</label>
+      <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+         </div>
+         <input type="date" id="date" class="form-control" [(ngModel)]="date">
+       </div>
+       <div class="input-group mb-3">
+          <button (click)="search()"> Buscar</button>
+       </div>
+       
+     </div>
 
   <table class="table table-hover">
     <thead class="red">
@@ -116,7 +123,7 @@
     <tbody>
 
       <tr *ngFor="let workShift of workShifts">
-        <th scope="row">{{ workShift.date_time | date:"MM/dd/yy"}}</th>
+        <th scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
         <td>{{ workShift.date_time | date:"h:mm a "}}</td>
         <td>{{ workShift.username }}</td>
         <td>{{ workShift.first_name }}</td>
