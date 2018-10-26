@@ -38,12 +38,17 @@ export class ReportComponent implements OnInit {
   }
 
   getReportWithFilter(){
+    this.total = 0;
     let fromDate = this.getFromDate();
     let toDate = this.getToDate();
 
     this.reportService.getReport(fromDate, toDate)
     .subscribe(report => {
-      this.report = report
+      this.report = report;
+      
+      this.report.forEach(item =>{
+        this.total += item.price;
+      })
       console.log(report);
     });
   }
