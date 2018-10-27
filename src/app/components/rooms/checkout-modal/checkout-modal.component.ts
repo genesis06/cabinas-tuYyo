@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, EventEmitter, Output } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Rent } from 'src/app/models/rent';
 import { RentService } from 'src/app/shared/rent/rent.service';
@@ -16,6 +16,7 @@ export class CheckoutModalComponent implements OnInit {
   
   public isModal:boolean = false;
   @Input("cabin") public cabin: Cabin;
+  @Output() refresh = new EventEmitter<boolean>();
 
   constructor(private rentService: RentService) {
    }
@@ -42,6 +43,7 @@ export class CheckoutModalComponent implements OnInit {
           (data) => {
             console.log(data);
             //this.resetValues();
+            this.refreshed();
             this.hideModal();
           },
           (error) => {
@@ -50,6 +52,10 @@ export class CheckoutModalComponent implements OnInit {
              this.hideModal();
           }
       );
+  }
+
+  refreshed(){
+    this.refresh.emit(true);
   }
 
 }
