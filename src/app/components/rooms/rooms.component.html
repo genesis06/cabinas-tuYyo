@@ -91,7 +91,7 @@
 
 
                 <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information>
-                <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefreshCabins($event)"></checkout-modal>
+                <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefresh($event)"></checkout-modal>
 
 
                 <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver
@@ -157,7 +157,7 @@
               <td>{{ rent.lost_stuff }}</td>
               <td>
                 
-                <lost-stuff-modal [rent]="rent" (refresh)="onRefresh($event)"></lost-stuff-modal>
+                <lost-stuff-modal [rent]="rent" (refresh)="onRefreshLastRents($event)"></lost-stuff-modal>
                 <!---<a class="btn red" href="#">
                   <i class="icon cui-trash"></i>
                 </a>-->

@@ -93,10 +93,17 @@ export class RoomsComponent implements OnInit {
     }
   }
   
-  onRefresh(refresh){
+  onRefreshLastRents(refresh){
     if(refresh){
      this.getRents();
     }
+  }
+
+  onRefresh(refresh){
+    if(refresh){
+      this.getCabins();
+      this.getRents();
+     }
   }
 
 }

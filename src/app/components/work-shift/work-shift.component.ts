@@ -18,8 +18,8 @@ export class WorkShiftComponent implements OnInit {
   constructor(private workShiftService: WorkShiftService) { }
 
   ngOnInit() {
-   // this.initFromDate();
-    //this.initToDate();
+    this.initFromDate();
+    this.initToDate();
     this.getWorkShifts();
   }
 
