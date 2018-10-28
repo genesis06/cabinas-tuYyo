@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
+import { AuthGuard } from 'src/app/shared/auth-guard/auth-guard.service';
 
 @Component({
   selector: 'add-work-shift-modal',
@@ -10,6 +11,8 @@ import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 })
 export class AddWorkShiftModalComponent implements OnInit {
   @ViewChild('lgModal') public lgModal:ModalDirective;
+
+  @Output() refresh = new EventEmitter<boolean>();
   
   public isModal:boolean = false;
 
@@ -20,7 +23,7 @@ export class AddWorkShiftModalComponent implements OnInit {
   public bill20000: number;
   public bill50000: number;
 
-  constructor(private workShiftService: WorkShiftService) {
+  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard) {
    }
 
   ngOnInit() {
@@ -46,11 +49,13 @@ export class AddWorkShiftModalComponent implements OnInit {
   createWorkShift(){
 
     let moneyReceived = this.sumBills();
+    let currentUsername = this.authGuard.getCurrentUser();
     
-    this.workShiftService.createWorkShift(moneyReceived, "702230639")
+    this.workShiftService.createWorkShift(moneyReceived, currentUsername)
       .subscribe(
           (data) => {
             console.log(data);
+            this.refreshed();
            // this.resetValues();
             this.hideModal();
           },
@@ -60,6 +65,10 @@ export class AddWorkShiftModalComponent implements OnInit {
               this.hideModal();
           }
       );
+  }
+
+  refreshed(){
+    this.refresh.emit(true);
   }
 
 

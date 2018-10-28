@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 import { WorkShift } from 'src/app/models/work_shift';
+import { AuthGuard } from 'src/app/shared/auth-guard/auth-guard.service';
 
 @Component({
   selector: 'work-shift',
@@ -15,12 +16,17 @@ export class WorkShiftComponent implements OnInit {
   public fromDate: string;
   public toDate: string;
 
-  constructor(private workShiftService: WorkShiftService) { }
+  public currentUsername: string;
+
+
+  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard) { }
 
   ngOnInit() {
     this.initFromDate();
     this.initToDate();
     this.getWorkShifts();
+
+    this.currentUsername = this.authGuard.getCurrentUser();
   }
 
   getWorkShifts(){

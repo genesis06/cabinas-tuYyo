@@ -19,7 +19,8 @@ export class WorkShiftService {
       Config.cabin_url+Config.cabin_base+"/workShifts", 
       JSON.stringify({
         money_received: moneyReceived,
-        username: username
+        username: username, 
+        date_time: JSON.stringify(new Date())
       }), 
       httpOptions
       );
@@ -41,6 +42,6 @@ export class WorkShiftService {
 
   getWorkShifts(fromDate, toDate): Observable<WorkShift[]>{
     console.log(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate)
-    return this._http.get<WorkShift[]>(Config.cabin_url+Config.cabin_base+"/workShifts", httpOptions).pipe();
+    return this._http.get<WorkShift[]>(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate, httpOptions).pipe();
   }
 }

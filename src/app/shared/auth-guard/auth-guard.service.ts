@@ -65,6 +65,19 @@ export class AuthGuard {
         return !this.isTokenExpired();
     }
 
+    getCurrentUser(){
+
+        let token = localStorage.getItem(Config.TOKEN_KEY);
+        let decoded = this.jwtHelper.decodeToken(token);
+    
+        let username = decoded.username;
+
+        console.log("USERNAME: "+username);
+    
+        return username;
+        
+      }
+
     /*loggedIn(){
         let token = localStorage.getItem(Config.TOKEN_KEY);
 

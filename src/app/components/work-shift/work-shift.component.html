@@ -90,7 +90,7 @@
   <hr class="line"> -->
 
   <h4>Cambios de turno</h4>
-  <add-work-shift-modal></add-work-shift-modal>
+  <add-work-shift-modal (refresh)="onRefresh($event)"></add-work-shift-modal>
 
 
   <div class="float-left">
@@ -123,14 +123,14 @@
     <tbody>
 
       <tr *ngFor="let workShift of workShifts">
-        <th scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
-        <td>{{ workShift.date_time | date:"h:mm a "}}</td>
-        <td>{{ workShift.username }}</td>
-        <td>{{ workShift.first_name }}</td>
-        <td>{{ workShift.last_name }}</td>
-        <td>{{ workShift.money_received }}</td>
-        <td>{{ workShift.money_delivered }}</td>
-        <td>
+        <th *ngIf="currentUsername ==  workShift.username" scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.date_time | date:"h:mm a "}}</td>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.username }}</td>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.first_name }}</td>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.last_name }}</td>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.money_received }}</td>
+        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.money_delivered }}</td>
+        <td *ngIf="currentUsername ==  workShift.username">
           <edit-work-shift-modal [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
         </td>
       </tr>
