@@ -123,14 +123,14 @@
     <tbody>
 
       <tr *ngFor="let workShift of workShifts">
-        <th *ngIf="currentUsername ==  workShift.username" scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.date_time | date:"h:mm a "}}</td>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.username }}</td>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.first_name }}</td>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.last_name }}</td>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.money_received }}</td>
-        <td *ngIf="currentUsername ==  workShift.username">{{ workShift.money_delivered }}</td>
-        <td *ngIf="currentUsername ==  workShift.username">
+        <th *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username" scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.date_time | date:"h:mm a "}}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.username }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.first_name }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.last_name }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_received }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_delivered }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">
           <edit-work-shift-modal [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
         </td>
       </tr>

@@ -72,11 +72,19 @@ export class AuthGuard {
     
         let username = decoded.username;
 
-        console.log("USERNAME: "+username);
-    
         return username;
         
-      }
+    }
+
+    hasAdminRole(){
+        let token = localStorage.getItem(Config.TOKEN_KEY);
+        let decoded = this.jwtHelper.decodeToken(token);
+
+        let roles : Array<string> = decoded.roles;
+
+        return roles.includes("admin");
+    }
+
 
     /*loggedIn(){
         let token = localStorage.getItem(Config.TOKEN_KEY);
