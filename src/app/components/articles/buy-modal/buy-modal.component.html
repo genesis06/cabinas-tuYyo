@@ -11,11 +11,17 @@
       </div>
 
       <div class="modal-body">
-        <div class="float-left text-dark">
-          <h6 >Descripción de carros</h6>
-        </div>
-        <div class="clearfix"><br></div>
 
+        
+        <div class="">
+          <label for="time">Cantidad</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
+            </div>
+            <input type="number" [(ngModel)]="amount" class="form-control" id="time" placeholder="Cantidad">
+          </div>
+        </div>
         
 
         <div class="input-group mb-3">

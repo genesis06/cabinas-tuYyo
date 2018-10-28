@@ -16,6 +16,7 @@ export class BuyModalComponent implements OnInit {
   @ViewChild('lgModal') public lgModal:ModalDirective;
   
   public isModal:boolean = false;
+  public amount: number = 1;
 
   @Input('articules') public articules: Array<Articule>;
   @Output() refresh = new EventEmitter<boolean>();
@@ -50,7 +51,7 @@ export class BuyModalComponent implements OnInit {
   }
 
   saleArticule(){
-    let articules = new SaleArticule(this.selectedArticule.id, 1, this.selectedArticule.price);
+    let articules = new SaleArticule(this.selectedArticule.id, this.amount, this.selectedArticule.price * this.amount);
     this.saleService.saleArticule([articules])
       .subscribe(
           (data) => {
