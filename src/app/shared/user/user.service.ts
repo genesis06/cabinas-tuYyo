@@ -5,13 +5,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../../models/user';
 import { catchError, map, tap } from 'rxjs/operators';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 
+                              'Authorization': 'Bearer '+ localStorage.getItem(Config.TOKEN_KEY)})
+};
+
 @Injectable()
 export class UserService {
 
   constructor(private _http: HttpClient) { }
 
   getUsers(): Observable<User[]>{
-    return this._http.get<User[]>(Config.cabin_url+Config.cabin_base+"/users")
+    return this._http.get<User[]>(Config.cabin_url+Config.cabin_base+"/users", httpOptions)
     .pipe(
       map( data => {
         let users = []

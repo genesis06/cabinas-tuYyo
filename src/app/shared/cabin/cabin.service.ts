@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { Cabin } from '../../models/cabin';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 
+                              'Authorization': 'Bearer '+ localStorage.getItem(Config.TOKEN_KEY)})
 };
 
 @Injectable()
@@ -14,7 +15,7 @@ export class CabinService {
   constructor(private _http: HttpClient) { }
 
   getCabins(): Observable<Cabin[]>{
-    return this._http.get<Cabin[]>(Config.cabin_url+Config.cabin_base+"/cabins").pipe();
+    return this._http.get<Cabin[]>(Config.cabin_url+Config.cabin_base+"/cabins", httpOptions).pipe();
   }
 
   updateCabin(cabin: Cabin){

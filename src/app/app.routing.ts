@@ -17,9 +17,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'employees', component: EmployeesComponent , canActivate: [AuthGuard]},
   { path: 'rooms', component: RoomsComponent , canActivate: [AuthGuard]},
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'work-shift', component: WorkShiftComponent },
-  { path: 'report', component: ReportComponent }
+  { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
+  { path: 'work-shift', component: WorkShiftComponent, canActivate: [AuthGuard] },
+  { path: 'report', component: ReportComponent ,canActivate: [AuthGuard]}
 ];
 
 

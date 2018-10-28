@@ -5,7 +5,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SaleArticule } from 'src/app/models/sale_articule';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 
+                              'Authorization': 'Bearer '+ localStorage.getItem(Config.TOKEN_KEY)})
 };
 
 @Injectable()

@@ -7,7 +7,8 @@ import { Rent } from '../../models/rent';
 import { Cabin } from 'src/app/models/cabin';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 
+                              'Authorization': 'Bearer '+ localStorage.getItem(Config.TOKEN_KEY)})
 };
 
 @Injectable()

@@ -5,7 +5,8 @@ import { WorkShift } from 'src/app/models/work_shift';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 
+                              'Authorization': 'Bearer '+ localStorage.getItem(Config.TOKEN_KEY)})
 };
 
 @Injectable()
@@ -40,6 +41,6 @@ export class WorkShiftService {
 
   getWorkShifts(fromDate, toDate): Observable<WorkShift[]>{
     console.log(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate)
-    return this._http.get<WorkShift[]>(Config.cabin_url+Config.cabin_base+"/workShifts").pipe();
+    return this._http.get<WorkShift[]>(Config.cabin_url+Config.cabin_base+"/workShifts", httpOptions).pipe();
   }
 }

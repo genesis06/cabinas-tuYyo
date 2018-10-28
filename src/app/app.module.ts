@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
-
+import { JwtModule } from '@auth0/angular-jwt';
 import { ModalModule} from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
@@ -23,6 +23,10 @@ import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/los
 import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
 import { ReportComponent } from './components/report/report.component';
 import { EditWorkShiftModalComponent } from './components/work-shift/edit-work-shift-modal/edit-work-shift-modal.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -48,7 +52,14 @@ import { EditWorkShiftModalComponent } from './components/work-shift/edit-work-s
     FormsModule,
     HttpModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3001']
+        //blacklistedRoutes: ['localhost:3001/auth/']
+      }
+    })
   ],
   providers: [
     AuthGuard,
