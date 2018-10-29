@@ -22,7 +22,7 @@ export class EmployeesComponent implements OnInit {
     this.userService.getUsers()
     .subscribe(users => {
       this.users = users;
-    //  console.log(new Date(JSON.parse(users[0].start_time)));
+      console.log(new Date(users[0].end_time));
       console.log(users);
     });
   }
