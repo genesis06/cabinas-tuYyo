@@ -4,6 +4,7 @@ import { LoginService } from '../../shared/login/login.service';
 import { User } from '../../models/user';
 import { Config } from '../../shared/config';
 import { AuthGuard } from '../../shared/auth-guard/auth-guard.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   public user: User;
 
-  constructor(private router: Router, public authGuard: AuthGuard, private loginService: LoginService) { }
+  constructor(private router: Router, public authGuard: AuthGuard, private loginService: LoginService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.user = new User();
@@ -28,20 +29,41 @@ export class LoginComponent implements OnInit {
       this.loginService.login(this.user)
       .subscribe(
           (data) => {
-            console.log(data.json().token)
+            //console.log(data.json().token)
             localStorage.setItem(Config.TOKEN_KEY, data.json().token);
             this.router.navigate(['/rooms']);
+            this.showSuccess();
               
           },
           (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
+              if(error.status == 401){
+                this.showError("Usuario no autorizado", "Advertencia");
+              }
+              else{
+                this.showError("Ocurrio un error en la autenticación", "");
+              }
+              //console.log(error.status)
+             // console.info("response error "+JSON.stringify(error,null,4));
           }
       );
     } 
     else {
-      console.log("empty fields");
+      this.showInfo();
+      //console.log("empty fields");
     }
     
+  }
+
+  showSuccess() {
+    this.toastr.success(this.authGuard.getCurrentUserFirstname(), "Bienvenido");
+  }
+
+  showInfo(){
+    this.toastr.info("Complete la información solicitada", "Campos vacíos");
+  }
+
+  showError(message: string, title: string) {
+    this.toastr.warning(message, title);
   }
 
 }

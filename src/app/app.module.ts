@@ -7,6 +7,8 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ModalModule} from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -59,7 +61,9 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:3001']
         //blacklistedRoutes: ['localhost:3001/auth/']
       }
-    })
+    }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,
