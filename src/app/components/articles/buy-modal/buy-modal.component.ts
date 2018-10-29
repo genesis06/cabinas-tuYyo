@@ -4,6 +4,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Articule } from 'src/app/models/articule';
 import { SaleService } from 'src/app/shared/sale/sale.service';
 import { SaleArticule } from 'src/app/models/sale_articule';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'buy-modal',
@@ -23,7 +24,7 @@ export class BuyModalComponent implements OnInit {
 
   public selectedArticule: Articule;
 
-  constructor(private saleService: SaleService) { }
+  constructor(private saleService: SaleService, private toastr: ToastrService) { }
 
   ngOnInit() {
     
@@ -32,11 +33,11 @@ export class BuyModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
-    
+    this.showInfo();
   }
 
   public showModal():void {
-    this.selectedArticule = this.articules[0];
+    this.selectedArticule = this.articules? this.articules[0] : new Articule(0,"",0);
     this.isModal = true;
   }
 
@@ -45,7 +46,7 @@ export class BuyModalComponent implements OnInit {
   }
 
   changeArticule(index: number){
-    console.log(this.articules[index].name);
+    //console.log(this.articules[index].name);
     this.selectedArticule = this.articules[index];
     
   }
@@ -55,16 +56,33 @@ export class BuyModalComponent implements OnInit {
     this.saleService.saleArticule([articules])
       .subscribe(
           (data) => {
-            console.log(data);
-            //this.resetValues();
-            this.hideModal();
+            //console.log(data);
+            this.showSuccess();
+            this.lgModal.hide();
           },
           (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
-             // this.resetValues();
-              this.hideModal();
+            //console.info("response error "+JSON.stringify(error,null,4));
+             this.showError();
+             this.lgModal.hide();
           }
       );
+      this.resetValues();
+  }
+
+  resetValues(){
+    this.amount = 1;
+  }
+
+  showSuccess() {
+    this.toastr.success("Venta de "+this.selectedArticule.name+" realizada", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Venta sin realizar", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo realizar la venta", "Error");
   }
 
 }
