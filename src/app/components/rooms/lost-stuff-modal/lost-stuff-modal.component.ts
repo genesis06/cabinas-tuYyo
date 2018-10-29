@@ -3,6 +3,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { RentService } from 'src/app/shared/rent/rent.service';
 import { Rent } from 'src/app/models/rent';
 import * as _ from "lodash";
+import { Vehicule } from 'src/app/models/vehicule';
 
 @Component({
   selector: 'lost-stuff-modal',
@@ -15,6 +16,7 @@ export class LostStuffModalComponent implements OnInit {
   
   public isModal:boolean = false;
   public rent: Rent;
+  public vehicules: Array<Vehicule>;
 
   @Input("rent") public oldRent: any;
   @Output() refresh = new EventEmitter<boolean>();
@@ -24,7 +26,15 @@ export class LostStuffModalComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.getVehicules();
     console.log(this.rent);
+  }
+
+  getVehicules(){
+    this.rentService.getVehicules(this.oldRent.id)
+    .subscribe(vehicules => {
+      this.vehicules = vehicules;
+    });
   }
 
 
@@ -41,7 +51,18 @@ export class LostStuffModalComponent implements OnInit {
     this.isModal = false;
   }
 
+  addVehicule(){
+    this.vehicules.push( new Vehicule("",""));
+  }
+
+  updateVehicules(){
+    this.rent.vehicules = this.vehicules;
+  }
+
   postLostStuff(){
+
+    this.updateVehicules();
+    console.log(this.rent.vehicules);
     this.rentService.postLostStuff(this.rent)
       .subscribe(
           (data) => {

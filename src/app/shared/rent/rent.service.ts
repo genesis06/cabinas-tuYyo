@@ -45,6 +45,13 @@ export class RentService {
       );
   }
 
+  getVehicules(rentID: number): Observable<Vehicule[]>{
+    return this._http.get<Vehicule[]>(
+      Config.cabin_url+Config.cabin_base+"/rents/"+rentID+"/vehicules", 
+      httpOptions
+      );
+  }
+
   updateRent(rent: Rent){
     return this._http.put(
       Config.cabin_url+Config.cabin_base+"/rents/"+rent.id, 
