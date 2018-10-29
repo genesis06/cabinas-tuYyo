@@ -17,7 +17,7 @@
           <label for="time">Cantidad</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock"></i></span>
+              <span class="input-group-text" id="basic-addon1"><i class="fa fa-sort-numeric-up"></i></span>
             </div>
             <input type="number" [(ngModel)]="amount" class="form-control" id="time" placeholder="Cantidad">
           </div>
@@ -26,7 +26,7 @@
 
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1"><i class="fa fa-stopwatch"></i></span>
+            <span class="input-group-text" id="basic-addon1"><i class="icon cui-basket-loaded"></i></span>
           </div>
               <button class="form-control dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-describedby="basic-addon1" aria-haspopup="true" aria-expanded="false">
                 {{ selectedArticule ? selectedArticule.name : 'Artículos'}}
@@ -45,4 +45,4 @@
   </div>
 </div>
 
-<button type="button" class="btn btn-outline-primary float-right"(click)="showModal()"><i class="icon cui-basket-loaded"></i>Realizar venta</button>
+<button type="button" class="btn btn-outline-primary"(click)="showModal()"><i class="icon cui-basket-loaded"></i>Realizar venta</button>

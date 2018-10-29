@@ -91,7 +91,7 @@
 
   <h4>Cambios de turno</h4>
   <add-work-shift-modal (refresh)="onRefresh($event)"></add-work-shift-modal>
-
+<div class="clearfix"></div>
 
   <div class="float-left">
       <label for="date">Seleccione una fecha</label>
@@ -102,7 +102,7 @@
          <input type="date" id="date" class="form-control" [(ngModel)]="date">
        </div>
        <div class="input-group mb-3">
-          <button (click)="search()"> Buscar</button>
+          <button (click)="search()" class="btn btn-primary"> Buscar</button>
        </div>
        
      </div>
