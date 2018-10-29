@@ -10,3 +10,13 @@
 .margin-right{
     margin-right: 8px;
 }
+
+.fa-times-circle{
+    background-color: white;
+    margin-left: -10px;
+    margin-top: -4px;
+    z-index: 100;
+    position: absolute;
+    border-radius: 20px;
+
+}
