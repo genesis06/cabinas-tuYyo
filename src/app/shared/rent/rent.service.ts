@@ -28,7 +28,7 @@ export class RentService {
       Config.cabin_url+Config.cabin_base+"/rents", 
       JSON.stringify({
         cabin_id: rent.cabin_id,
-        check_in: JSON.stringify(new Date()),
+        check_in: rent.check_in ? rent.check_in : JSON.stringify(new Date()),
         contracted_time: rent.contracted_time,
         vehicules: rent.vehicules,
         observations: rent.observations,
