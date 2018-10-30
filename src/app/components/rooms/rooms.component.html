@@ -87,7 +87,7 @@
               <small class="text-muted">{{ cabin.status }}</small>
 
               <div class="buttons">
-                <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin.id" (refresh)="onRefreshCabins($event)"></add-rent-modal>
+                <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin" (refresh)="onRefreshCabins($event)"></add-rent-modal>
 
 
                 <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information>

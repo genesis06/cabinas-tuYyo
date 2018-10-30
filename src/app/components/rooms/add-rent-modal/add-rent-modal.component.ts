@@ -3,6 +3,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { Vehicule } from '../../../models/vehicule';
 import { RentService } from '../../../shared/rent/rent.service';
 import { Rent } from '../../../models/rent';
+import { ToastrService } from 'ngx-toastr';
+import { Cabin } from 'src/app/models/cabin';
 
 @Component({
   selector: 'add-rent-modal',
@@ -23,10 +25,10 @@ export class AddRentModalComponent implements OnInit {
 
   public rent: Rent;
 
-  @Input('cabin') public cabinID: number;
+  @Input('cabin') public cabin: Cabin;
   @Output() refresh = new EventEmitter<boolean>();
 
-  constructor(private rentService: RentService) {
+  constructor(private rentService: RentService, private toastr: ToastrService) {
    }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class AddRentModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
+    this.showInfo();
     this.resetValues();
   }
 
@@ -66,7 +69,7 @@ export class AddRentModalComponent implements OnInit {
   }
 
   getRentInformation(){
-    this.rent.cabin_id = this.cabinID;
+    this.rent.cabin_id = this.cabin.id;
     this.rent.vehicules = this.vehicules;
     this.rent.contracted_time = this.selectedTime;
     this.rent.check_in = this.getCheckInDate();
@@ -93,13 +96,15 @@ export class AddRentModalComponent implements OnInit {
             console.log(data);
             this.resetValues();
             this.refreshed();
-            this.hideModal();
+            this.showSuccess();
+            this.lgModal.hide();
 
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
               this.resetValues();
-              this.hideModal();
+              this.lgModal.hide();
+              this.showError();
           }
       );
   }
@@ -116,6 +121,18 @@ export class AddRentModalComponent implements OnInit {
   getMinutes(): number{
     let time = this.checkIn.split(":");
     return Number(time[1]);
+  }
+
+  showSuccess() {
+    this.toastr.success("Cabina #"+this.cabin.cabin_number+" alquilada", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Alquiler sin realizar", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo realizar el alquiler", "Error");
   }
 
 }

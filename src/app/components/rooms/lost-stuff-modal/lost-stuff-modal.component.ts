@@ -4,6 +4,7 @@ import { RentService } from 'src/app/shared/rent/rent.service';
 import { Rent } from 'src/app/models/rent';
 import * as _ from "lodash";
 import { Vehicule } from 'src/app/models/vehicule';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'lost-stuff-modal',
@@ -22,12 +23,12 @@ export class LostStuffModalComponent implements OnInit {
   @Output() refresh = new EventEmitter<boolean>();
   
 
-  constructor(private rentService: RentService) {
+  constructor(private rentService: RentService, private toastr: ToastrService) {
    }
 
   ngOnInit() {
     this.getVehicules();
-    console.log(this.rent);
+    //console.log(this.rent);
   }
 
   getVehicules(){
@@ -40,6 +41,7 @@ export class LostStuffModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
+    this.showInfo();
   }
 
   public showModal():void {
@@ -66,21 +68,35 @@ export class LostStuffModalComponent implements OnInit {
     this.rentService.postLostStuff(this.rent)
       .subscribe(
           (data) => {
-            console.log(data);
+            //console.log(data);
             //this.resetValues();
+            this.showSuccess();
             this.refreshed();
-            this.hideModal();
+            this.lgModal.hide();
           },
           (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
+            //console.info("response error "+JSON.stringify(error,null,4));
               //this.resetValues();
-             this.hideModal();
+            this.showError();
+            this.lgModal.hide();
           }
       );
   }
 
   refreshed(){
     this.refresh.emit(true);
+  }
+
+  showSuccess() {
+    this.toastr.success("Información de alquiler actualizada", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Información sin actualizar", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo actualizar la información", "Error");
   }
  
 }

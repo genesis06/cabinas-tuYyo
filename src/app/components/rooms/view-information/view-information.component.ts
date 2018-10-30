@@ -4,6 +4,7 @@ import { Rent } from '../../../models/rent';
 import { RentService } from '../../../shared/rent/rent.service';
 import { Vehicule } from 'src/app/models/vehicule';
 import * as _ from "lodash";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'view-information',
@@ -22,7 +23,7 @@ export class ViewInformationComponent implements OnInit {
   public vehicules: Array<Vehicule> = [];
   public contractedTimes: Array<number> = [2, 3, 12];
 
-  constructor(private rentService: RentService) {
+  constructor(private rentService: RentService, private toastr: ToastrService) {
    }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class ViewInformationComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
+    this.showInfo();
     this.resetValues();
   }
 
@@ -52,33 +54,35 @@ export class ViewInformationComponent implements OnInit {
           (data) => {
             this.rent = data;
             this.vehicules = _.cloneDeep(this.rent.vehicules);
-            console.log(data);
+            //console.log(data);
           },
           (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
+              //console.info("response error "+JSON.stringify(error,null,4));
               this.resetValues();
           }
       );
   }
 
   updateRent(){
-    console.log(this.rent);
-    console.log(this.vehicules);
+    //console.log(this.rent);
+    //console.log(this.vehicules);
     
     this.updateVehicules();
-    console.log(this.rent.vehicules);
+    //console.log(this.rent.vehicules);
     
     this.rentService.updateRent(this.rent)
       .subscribe(
           (data) => {
-            console.log(data);
+            //console.log(data);
+            this.showSuccess();
             this.resetValues();
-            this.hideModal();
+            this.lgModal.hide();
           },
           (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
+              //console.info("response error "+JSON.stringify(error,null,4));
+              this.showError();
               this.resetValues();
-              this.hideModal();
+              this.lgModal.hide();
           }
       );
   }
@@ -97,6 +101,18 @@ export class ViewInformationComponent implements OnInit {
 
   resetValues(){
     this.vehicules = [];
+  }
+
+  showSuccess() {
+    this.toastr.success("Información de alquiler actualizada", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Información sin actualizar", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo actualizar la información", "Error");
   }
 
  
