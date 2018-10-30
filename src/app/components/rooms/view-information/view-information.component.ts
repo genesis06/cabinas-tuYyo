@@ -67,10 +67,14 @@ export class ViewInformationComponent implements OnInit {
     //console.log(this.rent);
     //console.log(this.vehicules);
     
-    this.updateVehicules();
-    //console.log(this.rent.vehicules);
     
-    this.rentService.updateRent(this.rent)
+    //console.log(this.rent.vehicules);
+
+    if( this.validVehicules()){
+      console.log(this.vehicules);
+
+      this.updateVehicules();
+     /* this.rentService.updateRent(this.rent)
       .subscribe(
           (data) => {
             //console.log(data);
@@ -84,11 +88,42 @@ export class ViewInformationComponent implements OnInit {
               this.resetValues();
               this.lgModal.hide();
           }
-      );
+      );*/
+    }
+    
+    
+  }
+
+  validVehicules(){
+    let valid = true;
+
+
+    if(this.vehicules.length == 0 ){
+      valid = false;
+      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado.");
+    }
+    else if(this.vehicules.length >= 1  ){  
+      
+      for (let index = 0; index < this.vehicules.length; index++) {
+
+        if(this.vehicules[index].type == "" ){
+          this.showWarning("Los campos de tipo de vehículo son obligatorios.");
+          valid = false;
+          break;
+        }
+        
+      }
+    }
+
+    return valid;
   }
 
   addVehicule(){
-    this.vehicules.push( new Vehicule("",""));
+    this.vehicules.push( new Vehicule("","", false));
+  }
+
+  removeVehicule(index: number){
+    this.vehicules[index].deleted = true;
   }
 
   changeTime(index: number){
@@ -97,6 +132,8 @@ export class ViewInformationComponent implements OnInit {
 
   updateVehicules(){
     this.rent.vehicules = this.vehicules;
+
+    console.log(this.rent.vehicules);
   }
 
   resetValues(){
@@ -105,6 +142,10 @@ export class ViewInformationComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success("Información de alquiler actualizada", "Exitoso");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
   showInfo() {
