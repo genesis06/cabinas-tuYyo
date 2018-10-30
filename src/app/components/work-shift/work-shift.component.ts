@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 import { WorkShift } from 'src/app/models/work_shift';
 import { AuthGuard } from 'src/app/shared/auth-guard/auth-guard.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'work-shift',
@@ -19,7 +20,7 @@ export class WorkShiftComponent implements OnInit {
   public currentUsername: string;
 
 
-  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard) { }
+  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initFromDate();
@@ -33,8 +34,17 @@ export class WorkShiftComponent implements OnInit {
     this.workShiftService.getWorkShifts(this.fromDate, this.toDate)
     .subscribe(workShifts => {
       this.workShifts = workShifts;
+
+      if(this.workShifts.length == 0){
+        this.showInfo("No hay turnos registrados en la fecha ingresada");
+      }
     //  console.log(new Date(JSON.parse(users[0].start_time)));
-      console.log(workShifts);
+      //console.log(workShifts);
+    },
+    (error) => {
+      this.showError();
+        //console.info("response error "+JSON.stringify(error,null,4));
+        
     });
   }
 
@@ -44,8 +54,8 @@ export class WorkShiftComponent implements OnInit {
 
     let date = JSON.stringify(current).toString();
     this.fromDate = date.substring(1,date.length-1);
-    console.log(this.fromDate);
-    console.log(JSON.stringify(current));
+    //console.log(this.fromDate);
+    //console.log(JSON.stringify(current));
   }
 
   initToDate(){
@@ -55,8 +65,8 @@ export class WorkShiftComponent implements OnInit {
     let date = JSON.stringify(current).toString();
     this.toDate = date.substring(1,date.length-1); //Remove "" characters
     
-    console.log(this.toDate);
-    console.log(JSON.stringify(current));
+    //console.log(this.toDate);
+    //console.log(JSON.stringify(current));
   }
 
   getFromDate(){
@@ -90,6 +100,18 @@ export class WorkShiftComponent implements OnInit {
     this.fromDate = this.getFromDate();
     this.toDate = this.getToDate();
     this.getWorkShifts();
+  }
+
+  showSuccess() {
+    this.toastr.success("Información de alquiler actualizada", "Exitoso");
+  }
+
+  showInfo(message: string) {
+    this.toastr.info(message, "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo obtener información de los turnos", "Error");
   }
 
 }

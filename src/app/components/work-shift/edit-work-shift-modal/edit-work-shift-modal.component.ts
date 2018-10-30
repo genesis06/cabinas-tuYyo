@@ -3,6 +3,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 import { WorkShift } from 'src/app/models/work_shift';
 import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 import * as _ from "lodash";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'edit-work-shift-modal',
@@ -27,7 +28,7 @@ export class EditWorkShiftModalComponent implements OnInit {
   public bill50000: number;
   
 
-  constructor(private workShiftService: WorkShiftService) {
+  constructor(private workShiftService: WorkShiftService, private toastr: ToastrService) {
    }
 
    ngOnInit() {
@@ -59,13 +60,15 @@ export class EditWorkShiftModalComponent implements OnInit {
           (data) => {
             console.log(data);
            // this.resetValues();
+           this.showSuccess();
             this.refreshed();
-            this.hideModal();
+            this.lgModal.hide();
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
              // this.resetValues();
-              this.hideModal();
+             this.showError();
+             this.lgModal.hide();
           }
       );
   }
@@ -73,6 +76,7 @@ export class EditWorkShiftModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
+    this.showInfo();
   }
 
   public showModal():void {
@@ -86,6 +90,18 @@ export class EditWorkShiftModalComponent implements OnInit {
 
   refreshed(){
     this.refresh.emit(true);
+  }
+
+  showSuccess() {
+    this.toastr.success("El cambio de turno fue realizado", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Turno no actualizado", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo hacer el cambio turno", "Error");
   }
 
 }

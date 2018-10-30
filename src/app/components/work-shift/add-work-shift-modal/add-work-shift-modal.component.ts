@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angu
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { WorkShiftService } from 'src/app/shared/work-shift/work-shift.service';
 import { AuthGuard } from 'src/app/shared/auth-guard/auth-guard.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'add-work-shift-modal',
@@ -23,7 +24,7 @@ export class AddWorkShiftModalComponent implements OnInit {
   public bill20000: number;
   public bill50000: number;
 
-  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard) {
+  constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard, private toastr: ToastrService) {
    }
 
   ngOnInit() {
@@ -55,14 +56,16 @@ export class AddWorkShiftModalComponent implements OnInit {
       .subscribe(
           (data) => {
             console.log(data);
+            this.showSuccess();
             this.refreshed();
            // this.resetValues();
-            this.hideModal();
+           this.lgModal.hide();
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
              // this.resetValues();
-              this.hideModal();
+            this.showError();
+            this.lgModal.hide();
           }
       );
   }
@@ -74,6 +77,7 @@ export class AddWorkShiftModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
+    this.showInfo();
   }
 
   public showModal():void {
@@ -82,6 +86,18 @@ export class AddWorkShiftModalComponent implements OnInit {
 
   public onHidden():void {
     this.isModal = false;
+  }
+
+  showSuccess() {
+    this.toastr.success("El turno fue creado", "Exitoso");
+  }
+
+  showInfo() {
+    this.toastr.info("Turno no agregado", "Info");
+  }
+
+  showError() {
+    this.toastr.error("No se pudo agregar el turno", "Error");
   }
 
  
