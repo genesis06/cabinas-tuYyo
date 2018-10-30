@@ -88,25 +88,61 @@ export class AddRentModalComponent implements OnInit {
   }
 
   addRent(){
-    
-    this.getRentInformation();
-    this.rentService.createRent(this.rent)
-      .subscribe(
-          (data) => {
-            console.log(data);
-            this.resetValues();
-            this.refreshed();
-            this.showSuccess();
-            this.lgModal.hide();
 
-          },
-          (error) => {
-              console.info("response error "+JSON.stringify(error,null,4));
+    let areValidFields = this.validateFields();
+    
+    if( areValidFields ){
+      this.getRentInformation();
+      this.rentService.createRent(this.rent)
+        .subscribe(
+            (data) => {
+              console.log(data);
               this.resetValues();
+              this.refreshed();
+              this.showSuccess();
               this.lgModal.hide();
-              this.showError();
-          }
-      );
+
+            },
+            (error) => {
+                console.info("response error "+JSON.stringify(error,null,4));
+                this.resetValues();
+                this.lgModal.hide();
+                this.showError();
+            }
+        );
+    }
+    
+  }
+
+  validateFields(){
+    let valid = true;
+
+    if(this.invalidVehicules() && this.selectedTime == undefined){
+      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado y el tiempo contratado.");  valid = false;
+    }
+    else if( this.invalidVehicules() ){
+      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado."); 
+      valid = false;
+    }
+    else if(this.selectedTime == undefined){
+      this.showWarning("Se requiere ingresar el tiempo contratado"); 
+      valid = false;
+    }
+    console.log(this.selectedTime);
+    return valid;
+  }
+
+  invalidVehicules(){
+    let invalid = false;
+
+    if(this.vehicules.length == 0 ){
+      invalid = true;
+    }
+    else if(this.vehicules.length == 1 && this.vehicules[0].type == "" ){
+      invalid = true;
+    }
+
+    return invalid;
   }
 
   refreshed(){
@@ -125,6 +161,10 @@ export class AddRentModalComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success("Cabina #"+this.cabin.cabin_number+" alquilada", "Exitoso");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
   showInfo() {
