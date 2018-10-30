@@ -16,7 +16,7 @@
                <input type="date" id="date" class="form-control" [(ngModel)]="date">
              </div>
              <div class="input-group mb-3">
-                <button (click)="getReportWithFilter()" class="btn btn-primary"> Buscar</button>
+                <button (click)="search()" class="btn btn-primary"> Buscar</button>
              </div>
              
            </div>
@@ -42,7 +42,7 @@
                 <td></td>
                 <td></td>
                 <td>TOTAL</td>
-                <td>{{ total }}</td>
+                <td>{{ getTotal() }}</td>
             </tr>
 
 

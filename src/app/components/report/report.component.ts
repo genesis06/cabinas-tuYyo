@@ -9,12 +9,11 @@ import { ReportService } from 'src/app/shared/report/report.service';
 })
 export class ReportComponent implements OnInit {
 
-  public report: Array<any>;
+  public report: Array<any> =[];
   public date: string;
   public fromDate: string;
   public toDate: string;
 
-  public total: number = 0;
 
   constructor(private reportService: ReportService) { }
 
@@ -30,27 +29,26 @@ export class ReportComponent implements OnInit {
     .subscribe(report => {
       this.report = report
 
-      this.report.forEach(item =>{
-        this.total += item.price;
-      })
-      console.log(report);
+      
+      
+      //console.log(report);
     });
   }
 
-  getReportWithFilter(){
-    this.total = 0;
-    let fromDate = this.getFromDate();
-    let toDate = this.getToDate();
+  getTotal(){
+    let total = 0;
+    this.report.forEach(item =>{
+      total += item.price;    
+    })
+    
+    return total;
+  }
 
-    this.reportService.getReport(fromDate, toDate)
-    .subscribe(report => {
-      this.report = report;
-      
-      this.report.forEach(item =>{
-        this.total += item.price;
-      })
-      console.log(report);
-    });
+  search(){
+    this.fromDate = this.getFromDate();
+    this.toDate = this.getToDate();
+
+    this.getReport();
   }
 
   initFromDate(){
