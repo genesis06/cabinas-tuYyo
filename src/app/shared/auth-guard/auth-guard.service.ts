@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Config } from '../config';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class AuthGuard {
 
   public config : Config;
 
-    constructor(private nav : Router, public jwtHelper: JwtHelperService) 
+    constructor(private nav : Router, public jwtHelper: JwtHelperService, private toastr: ToastrService) 
     { 
         this.config = new Config();
     }
@@ -37,11 +38,13 @@ export class AuthGuard {
     canActivate()
     {
         let token = localStorage.getItem(Config.TOKEN_KEY);
-        console.log("tokeeen: "+token);
+        //console.log("tokeeen: "+token);
         if(token !== null)
         {
             if(this.isTokenExpired()){
-                console.log("TOKEN EXPIRED")
+                this.toastr.warning("La sesión ha expirado. Por favor ingrese nuevamente.")
+                //console.log("TOKEN EXPIRED")
+
                 this.nav.navigate(['/login']);
                 return false;
             }

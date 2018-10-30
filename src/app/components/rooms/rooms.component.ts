@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CabinService } from '../../shared/cabin/cabin.service';
 import { Cabin } from '../../models/cabin';
 import { RentService } from 'src/app/shared/rent/rent.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rooms',
@@ -18,7 +19,7 @@ export class RoomsComponent implements OnInit {
   public unavailables: number;
   public maintenance: number;
 
-  constructor(private cabinService: CabinService, private rentService: RentService) { }
+  constructor(private cabinService: CabinService, private rentService: RentService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initDashboard();
@@ -32,8 +33,9 @@ export class RoomsComponent implements OnInit {
     this.cabinService.getCabins()
     .subscribe(cabins => {
       this.cabins = cabins
+      this.initDashboard();
       this.updateDashboard();
-      console.log(cabins);
+      //console.log(cabins);
     });
   }
 
@@ -46,7 +48,7 @@ export class RoomsComponent implements OnInit {
     .subscribe(data => {
       this.initDashboard();
       this.updateDashboard();
-      console.log(data);
+      this.showInfo("Estado de la cabina #"+cabin.cabin_number+" actualizado");
     });
   }
 
@@ -77,7 +79,7 @@ export class RoomsComponent implements OnInit {
       .subscribe(
           (rents) => {
             this.lastRents = rents;
-            console.log(rents);
+            //console.log(rents);
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
@@ -87,7 +89,6 @@ export class RoomsComponent implements OnInit {
 
   onRefreshCabins(refresh){
 
-    console.log("update cabins")
     if(refresh){
      this.getCabins();
     }
@@ -104,6 +105,10 @@ export class RoomsComponent implements OnInit {
       this.getCabins();
       this.getRents();
      }
+  }
+
+  showInfo(message: string) {
+    this.toastr.info(message, "Info");
   }
 
 }

@@ -41,7 +41,7 @@ export class WorkShiftService {
   }
 
   getWorkShifts(fromDate, toDate): Observable<WorkShift[]>{
-    console.log(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate)
+    //console.log(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate)
     return this._http.get<WorkShift[]>(Config.cabin_url+Config.cabin_base+"/workShifts?fromDate="+fromDate+"&toDate="+toDate, httpOptions).pipe();
   }
 }

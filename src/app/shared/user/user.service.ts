@@ -32,7 +32,7 @@ export class UserService {
           newUser.end_time = user.end_time;
           users.push(newUser);
         });
-        console.log("dataa: "+JSON.stringify(data));
+        //console.log("dataa: "+JSON.stringify(data));
         return data;
       })
     );

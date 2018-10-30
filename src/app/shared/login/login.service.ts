@@ -12,7 +12,7 @@ export class LoginService {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
 
-    console.log(Config.cabin_url+"/authenticate");
+    //console.log(Config.cabin_url+"/authenticate");
     
     return this._http.post(
         Config.cabin_url+"/authenticate",

@@ -16,7 +16,7 @@ export class ReportService {
 
   getReport(fromDate:string, toDate:string): Observable<any[]>{
 
-    console.log((Config.cabin_url+Config.cabin_base+"/report?fromDate="+fromDate+"&toDate="+toDate));
+    //console.log((Config.cabin_url+Config.cabin_base+"/report?fromDate="+fromDate+"&toDate="+toDate));
     return this._http.get<any[]>(Config.cabin_url+Config.cabin_base+"/report?fromDate="+fromDate+"&toDate="+toDate, httpOptions).pipe();
   }
 }
