@@ -73,7 +73,7 @@ export class AddRentModalComponent implements OnInit {
     this.rent.vehicules = this.vehicules;
     this.rent.contracted_time = this.selectedTime;
     this.rent.check_in = this.getCheckInDate();
-    console.log(this.rent);
+    //console.log(this.rent);
   }
 
   getCheckInDate(){
@@ -83,7 +83,7 @@ export class AddRentModalComponent implements OnInit {
       date.setHours(this.getHours());
       date.setMinutes(this.getMinutes());
     }
-    console.log(date);
+    //console.log(date);
     return JSON.stringify(date);
   }
 
@@ -96,7 +96,7 @@ export class AddRentModalComponent implements OnInit {
       this.rentService.createRent(this.rent)
         .subscribe(
             (data) => {
-              console.log(data);
+              //console.log(data);
               this.resetValues();
               this.refreshed();
               this.showSuccess();
@@ -104,7 +104,7 @@ export class AddRentModalComponent implements OnInit {
 
             },
             (error) => {
-                console.info("response error "+JSON.stringify(error,null,4));
+                //console.info("response error "+JSON.stringify(error,null,4));
                 this.resetValues();
                 this.lgModal.hide();
                 this.showError();
@@ -128,7 +128,7 @@ export class AddRentModalComponent implements OnInit {
       this.showWarning("Se requiere ingresar el tiempo contratado"); 
       valid = false;
     }
-    console.log(this.selectedTime);
+    //console.log(this.selectedTime);
     return valid;
   }
 
