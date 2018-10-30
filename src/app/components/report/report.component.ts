@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from 'src/app/shared/report/report.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-report',
@@ -15,7 +16,7 @@ export class ReportComponent implements OnInit {
   public toDate: string;
 
 
-  constructor(private reportService: ReportService) { }
+  constructor(private reportService: ReportService, private toastr: ToastrService) { }
 
   ngOnInit() {
     
@@ -29,7 +30,9 @@ export class ReportComponent implements OnInit {
     .subscribe(report => {
       this.report = report
 
-      
+      if(this.report.length == 0){
+        this.showInfo("No hay reporte de alquileres ni ventas en la fecha ingresada");
+      }
       
       //console.log(report);
     });
@@ -57,8 +60,8 @@ export class ReportComponent implements OnInit {
 
     let date = JSON.stringify(current).toString();
     this.fromDate = date.substring(1,date.length-1);
-    console.log(this.fromDate);
-    console.log(JSON.stringify(current));
+   // console.log(this.fromDate);
+   // console.log(JSON.stringify(current));
   }
 
   initToDate(){
@@ -68,8 +71,8 @@ export class ReportComponent implements OnInit {
     let date = JSON.stringify(current).toString();
     this.toDate = date.substring(1,date.length-1); //Remove "" characters
     
-    console.log(this.toDate);
-    console.log(JSON.stringify(current));
+    //console.log(this.toDate);
+    //console.log(JSON.stringify(current));
   }
 
   getFromDate(){
@@ -91,6 +94,10 @@ export class ReportComponent implements OnInit {
     let dateJson = JSON.stringify(new Date(Number(year), Number(month)-1, Number(day),23,59,59));
 
     return dateJson.substring(1,dateJson.length-1);
+  }
+
+  showInfo(message: string) {
+    this.toastr.info(message, "Info");
   }
 
 }
