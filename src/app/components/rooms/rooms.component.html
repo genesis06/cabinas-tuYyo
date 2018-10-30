@@ -84,7 +84,9 @@
 
 
               <div class="text-value">Cabina {{cabin.cabin_number}}</div>
-              <small class="text-muted">{{ cabin.status }}</small>
+              <small *ngIf="cabin.status == 'available'" class="text-muted">Disponible</small>
+              <small *ngIf="cabin.status == 'unavailable'" class="text-muted">En uso</small>
+              <small *ngIf="cabin.status == 'maintenance'" class="text-muted">En mantenimiento</small>
 
               <div class="buttons">
                 <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin" (refresh)="onRefreshCabins($event)"></add-rent-modal>
