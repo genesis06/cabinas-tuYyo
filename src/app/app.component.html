@@ -25,15 +25,21 @@
             </a>
           </li>
 
-          <li class="nav-item" routerLink="/employees" [class.selected]="router.url === '/employees'">
+          <li *ngIf="this.authGuard.hasAdminRole()" class="nav-item" routerLink="/employees" [class.selected]="router.url === '/employees'">
             <a class="nav-link white">
               <i class="icon cui-user"></i> Trabajadores
             </a>
           </li>
 
-          <li class="nav-item" routerLink="/incomes" [class.selected]="router.url === '/incomes'">
+          <li class="nav-item" routerLink="/work-shift" [class.selected]="router.url === '/work-shift'">
             <a class="nav-link  white">
-              <i class="icon cui-dollar"></i> Ganancias
+              <i class="icon cui-dollar"></i> Turnos
+            </a>
+          </li>
+
+          <li *ngIf="this.authGuard.hasAdminRole()" class="nav-item" routerLink="/report" [class.selected]="router.url === '/report'">
+            <a class="nav-link  white">
+              <i class="icon cui-note"></i> Reporte
             </a>
           </li>
 

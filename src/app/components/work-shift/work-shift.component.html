@@ -1,0 +1,145 @@
+<div>
+  <!-- <div>
+    <h4>Ganancias</h4>
+    <button class="btn btn-primary" type="button">Descargar reporte</button>
+  </div>
+  <div class="clearfix"></div>
+  <div class="row types">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-primary bg-light">
+        <div class="card-body pb-0">
+          <div class="text-value">Ganancia diaria</div>
+          <div class="text-value">800 000</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>1 0000
+            <hr>
+          </div>
+          <div class="text-value text-primary">100</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>2 0000
+            <hr>
+          </div>
+          <div class="text-value text-primary">30</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>5 0000
+            <hr>
+          </div>
+          <div class="text-value text-primary">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>10 0000
+            <hr>
+          </div>
+          <div class="text-value text-primary">50</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>20 0000
+            <hr>
+          </div>
+          <div class="text-value text-primary">200</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="card text-gray bg-white">
+        <div class="card-body pb-0">
+          <div class="">Billetes de</div>
+          <div>50 0000
+            <hr>
+          </div>
+
+          <div class="text-value text-primary">10</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="line"> -->
+
+  <h4>Cambios de turno</h4>
+  <add-work-shift-modal (refresh)="onRefresh($event)"></add-work-shift-modal>
+<div class="clearfix"></div>
+
+  <div class="float-left">
+      <label for="date">Seleccione una fecha</label>
+      <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <span class="input-group-text" id="basic-addon1"><i class="fa fa-calendar"></i></span>
+         </div>
+         <input type="date" id="date" class="form-control" [(ngModel)]="date">
+       </div>
+       <div class="input-group mb-3">
+          <button (click)="search()" class="btn btn-primary"> Buscar</button>
+       </div>
+       
+     </div>
+
+  <table class="table table-hover">
+    <thead class="red">
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Hora</th>
+        <th scope="col">Cédula</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Dinero recibido</th>
+        <th scope="col">Dinero entregado</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let workShift of workShifts">
+        <th *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username" scope="row">{{ workShift.date_time | date:"dd/MM/yy"}}</th>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.date_time | date:"h:mm a "}}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.username }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.first_name }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.last_name }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_received }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_delivered }}</td>
+        <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">
+          <edit-work-shift-modal [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
+        </td>
+      </tr>
+
+
+
+
+
+    </tbody>
+  </table>
+
+</div>

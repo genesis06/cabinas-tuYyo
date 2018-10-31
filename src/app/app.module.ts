@@ -5,19 +5,32 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
-
+import { JwtModule } from '@auth0/angular-jwt';
 import { ModalModule} from 'ngx-bootstrap/modal';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { AuthGuard } from './shared/auth-guard/auth-guard.service';
-import { AddRoomModalComponent } from './components/rooms/add-room-modal/add-room-modal.component';
+import { AddRentModalComponent } from './components/rooms/add-rent-modal/add-rent-modal.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { BuyModalComponent } from './components/articles/buy-modal/buy-modal.component';
-import { IncomesComponent } from './components/incomes/incomes.component';
-import { AddIncomeModalComponent } from './components/incomes/add-income-modal/add-income-modal.component';
+import { WorkShiftComponent } from './components/work-shift/work-shift.component';
+import { AddWorkShiftModalComponent } from './components/work-shift/add-work-shift-modal/add-work-shift-modal.component';
+import { ViewInformationComponent } from './components/rooms/view-information/view-information.component';
+import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/lost-stuff-modal.component';
+import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
+import { ReportComponent } from './components/report/report.component';
+import { EditWorkShiftModalComponent } from './components/work-shift/edit-work-shift-modal/edit-work-shift-modal.component';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 @NgModule({
   declarations: [
@@ -25,11 +38,16 @@ import { AddIncomeModalComponent } from './components/incomes/add-income-modal/a
     LoginComponent,
     EmployeesComponent,
     RoomsComponent,
-    AddRoomModalComponent,
+    AddRentModalComponent,
     ArticlesComponent,
     BuyModalComponent,
-    IncomesComponent,
-    AddIncomeModalComponent,
+    WorkShiftComponent,
+    AddWorkShiftModalComponent,
+    ViewInformationComponent,
+    LostStuffModalComponent,
+    CheckoutModalComponent,
+    ReportComponent,
+    EditWorkShiftModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +56,17 @@ import { AddIncomeModalComponent } from './components/incomes/add-income-modal/a
     FormsModule,
     HttpModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3001']
+        //blacklistedRoutes: ['localhost:3001/auth/']
+      }
+    }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,

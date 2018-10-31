@@ -5,7 +5,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Alquilar cabina</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hideModal()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -13,23 +13,23 @@
       <div class="modal-body">
         <div>
         <div class="float-left text-dark">
-          <h6 >Descripción de carros</h6>
+          <h6 >Descripción de vehículos</h6>
         </div>
 
           <div class="mb-3 float-right">
-            <button type="button" class="btn btn-sm btn-outline-primary" (click)="addVehicule()">Agregar carro</button>
+            <button type="button" class="btn btn-sm btn-outline-primary" (click)="addVehicule()">Agregar vehículo</button>
           </div>
         </div>
         <div class="clearfix"></div>
 
-        <div *ngFor="let vehicule of vehicules">
+        <div *ngFor="let vehicule of vehicules; index as i;">
           <div class="float-left">
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
               </div>
-              <input type="text" class="form-control" [(ngModel)]="vehicule.type" placeholder="Tipo de carro" aria-label="Username"
-                aria-describedby="basic-addon1">
+              <input type="text" class="form-control" [(ngModel)]="vehicule.type" placeholder="Tipo de vehículo">
+              <div *ngIf="i != 0" (click)="removeVehicule(i)"><i class="far fa-times-circle" ></i></div>
             </div>
           </div>
   
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-          <div class="clearfix dark"><hr><br></div> 
+          <div class="clearfix dark"></div> 
 
         <div class="">
           <label for="time">Seleccione una hora de entrada</label>
@@ -92,7 +92,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench"></i></span>
           </div>
-          <input type="text" class="form-control" [(ngModel)]="rent.necessaryRepairs" placeholder="Reparaciones necesarias" aria-label="Username" aria-describedby="basic-addon1">
+          <input type="text" class="form-control" [(ngModel)]="rent.necessary_repairs" placeholder="Reparaciones necesarias" aria-label="Username" aria-describedby="basic-addon1">
         </div>
 
       </div>

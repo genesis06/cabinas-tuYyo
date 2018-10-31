@@ -1,6 +1,7 @@
 <div>
-  <h4 class="float-left">Compra de artículos</h4>
-  <buy-modal></buy-modal>
+  <h4 class="float-left">Venta de artículos</h4>
+  <div class="clearfix"></div>
+  <buy-modal [articules]="articules"></buy-modal>
   <!-- <add-room-modal></add-room-modal> -->
   <!-- <button type="button" class="btn btn-outline-primary float-right"><i class="icon cui-basket-loaded"></i>Hacer compra</button> -->
 
@@ -9,21 +10,16 @@
       <tr>
         <!-- <th scope="col">Cantidad disponible</th> -->
         <th scope="col">Artículos disponibles</th>
+        
       </tr>
+      
     </thead>
     <tbody>
 
-      <tr>
+
+      <tr *ngFor="let articule of articules">
         <!-- <th scope="row">20</th> -->
-        <td>Condones</td>
-      </tr>
-      <tr>
-        <!-- <th scope="row">2</th> -->
-        <td>Esposas</td>
-      </tr>
-      <tr>
-        <!-- <th scope="row">10</th> -->
-        <td>Lubricante</td>
+        <td>{{ articule.name | titlecase }}</td>
       </tr>
 
 

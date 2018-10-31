@@ -4,7 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { ArticlesComponent } from './components/articles/articles.component';
-import { IncomesComponent } from './components/incomes/incomes.component';
+import { WorkShiftComponent } from './components/work-shift/work-shift.component';
+import { ReportComponent } from './components/report/report.component';
 
 
 import { AuthGuard } from './shared/auth-guard/auth-guard.service';
@@ -16,8 +17,9 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'employees', component: EmployeesComponent , canActivate: [AuthGuard]},
   { path: 'rooms', component: RoomsComponent , canActivate: [AuthGuard]},
-  { path: 'articles', component: ArticlesComponent },
-  { path: 'incomes', component: IncomesComponent }
+  { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
+  { path: 'work-shift', component: WorkShiftComponent, canActivate: [AuthGuard] },
+  { path: 'report', component: ReportComponent ,canActivate: [AuthGuard]}
 ];
 
 

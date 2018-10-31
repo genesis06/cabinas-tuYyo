@@ -1,0 +1,116 @@
+<!-- Modal -->
+<div *ngIf="isModal" class="modal fade" (onHidden)="onHidden()" [config]="{ show: true }" bsModal #lgModal="bs-modal"
+  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Información alquiler</h5>
+        <button type="button" class="close" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      
+
+      <div class="modal-body">
+          <div>
+      
+            <div class="mb-3 float-right">
+              <button type="button" class="btn btn-sm btn-outline-primary" (click)="addVehicule()">Agregar vehículo</button>
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+          <div *ngFor="let vehicule of vehicules; index as i;">
+              <div class="float-left" [hidden]="vehicule.deleted">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-car "></i></span>
+                  </div> 
+                  <input type="text" class="form-control" [(ngModel)]="vehicule.type" placeholder="Tipo de vehículo" aria-label="Username"  
+                    aria-describedby="basic-addon1"> 
+                    <div *ngIf="i != 0" (click)="removeVehicule(i, vehicule.id)"><i class="far fa-times-circle" ></i></div>
+                </div>
+              </div>
+      
+              <div class="float-right" [hidden]="vehicule.deleted">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-car "></i></span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="vehicule.license_plate" placeholder="Número de placa" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
+
+       <!-- <div class="input-group">
+            <div><i class="fa fa-clock "></i></div> <span class="text-dark margin-right">Hora de entrada: </span> <p class="text-muted">{{ rent.check_in | date:"dd/MM/yy - h:mm a "}}</p>
+        </div>-->
+            <div>
+                <label>Hora de entrada</label>
+                <div class="input-group mb-3">
+                        
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-clock "></i></span>
+                    </div>
+                    <input type="text" class="form-control" value="{{ rent.check_in | date:'dd/MM/yy - h:mm a '}}" placeholder="Hora de entrada" disabled>
+                  </div>
+            </div>
+        
+        <div>
+            <label>Horas contratadas</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-stopwatch "></i></span>
+                </div>
+                <!-- <div class=""> -->
+                    <button class="form-control dropdown-toggle text-left" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-describedby="basic-addon1" aria-haspopup="true" aria-expanded="false">
+                      {{ rent.contracted_time + ' horas' }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" *ngFor="let time of contractedTimes; index as i" (click)="changeTime(i)">{{ time }} horas</a>
+                      </div>
+              </div>
+        </div>
+        
+
+
+        <!--<div class="input-group">
+            <div><i class="fa fa-sticky-note "></i></div> <span class="text-dark margin-right">Observaciones: </span> <p class="text-muted">{{ rent.observations ? rent.observations : 'No hay'}}</p>
+        </div>-->
+
+        <div>
+            <label>Observaciones</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa fa-sticky-note "></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="rent.observations" placeholder="Observaciones" aria-describedby="basic-addon1">
+              </div>
+        </div>
+        
+
+        <!--<div class="input-group">
+            <div><i class="fa fa-wrench "></i></div> <span class="text-dark margin-right">Reparaciones necesarias: </span> <p class="text-muted">{{ rent.necessaryRepairs ? rent.necessaryRepairs : 'Ninguna'}}</p>
+        </div>-->
+        <div>
+            <label>Reparaciones necesarias</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-wrench "></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="rent.necessary_repairs" placeholder="Reparaciones necesarias" aria-describedby="basic-addon1">
+              </div>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cerrar</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="updateRent()">Editar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button type="button" class="btn btn-sm btn-primary" (click)="showModal()">Editar información</button>

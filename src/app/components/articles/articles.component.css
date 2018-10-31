@@ -9,3 +9,7 @@ tr{
 .dropdown-toggle::after{
     color: transparent;
 }
+
+.clearfix{
+    clear: both;
+}

@@ -18,6 +18,11 @@
     color: #d25051;
 }
 
+.checkout-color{
+    color:gray;
+}
+
+
 .text-gray{
     color: gray;
 }
@@ -60,4 +65,15 @@ hr{
 
 .text-value {
     font-size: 1.2rem;
+}
+
+.tab-content {
+    margin-top: 1em;
+    background: transparent;
+    padding: 0 !important;
+    border: none;
+}
+
+.tab-content .tab-pane {
+    padding: 1rem 0;
 }

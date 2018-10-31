@@ -1,8 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('./toastr.css');
 
 .container{
     font-family: 'Open Sans', sans-serif;
+}
+
+.bg-success{
+    background-color: rgb(83, 83, 83) !important;
+}
+
+.bg-danger{
+    background-color: #d25051 !important;
 }
 
 .btn-primary{
@@ -44,7 +53,7 @@ body{
 
 .container-fluid{
     margin: 1em;
-    margin-top: 4em;
+    margin-top: 2em;
 }
 
 h4{

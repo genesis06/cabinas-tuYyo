@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddRoomModalComponent } from './add-room-modal.component';
+import { LostStuffModalComponent } from './lost-stuff-modal.component';
 
-describe('AddRoomModalComponent', () => {
-  let component: AddRoomModalComponent;
-  let fixture: ComponentFixture<AddRoomModalComponent>;
+describe('LostStuffModalComponent', () => {
+  let component: LostStuffModalComponent;
+  let fixture: ComponentFixture<LostStuffModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddRoomModalComponent ]
+      declarations: [ LostStuffModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddRoomModalComponent);
+    fixture = TestBed.createComponent(LostStuffModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

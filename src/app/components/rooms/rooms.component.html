@@ -4,114 +4,186 @@
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">80</div>
+        <div class="h4 m-0">{{ availables }}</div>
         <div>Disponibles</div>
         <div class="progress progress-xs my-3">
-          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar bg-info" role="progressbar"
-            style="width: 80%"></div>
+            <progressbar class="progress-bar" [value]="availables" [max]="10"></progressbar>
         </div>
       </div>
     </div>
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">2</div>
-        <div>En proceso de entrega</div>
-        <div class="progress progress-xs my-3">
-          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar available" role="progressbar"
-            style="width: 5%"></div>
+        <div class="h4 m-0">{{ maintenance }}</div>
+        <div>En mantenimiento</div>
+        <div class="progress progress-xs my-3 ">
+         <!--- <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar available" role="progressbar"
+            style="width: 5%"></div>-->
+            <progressbar class="progress-bar available" [value]="maintenance" [max]="10" type="success"></progressbar>
         </div>
       </div>
     </div>
 
     <div class="col-sm-6 col-lg-4">
       <div class="">
-        <div class="h4 m-0">20</div>
+        <div class="h4 m-0">{{ unavailables }}</div>
         <div>En uso</div>
         <div class="progress progress-xs my-3">
-          <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar inUse" role="progressbar"
-            style="width: 20%"></div>
+          <!---<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar inUse" role="progressbar"
+            style="width: 20%"></div>-->
+            <progressbar class="progress-bar" [value]="unavailables" [max]="10" type="danger"></progressbar>
         </div>
       </div>
     </div>
 
   </div>
-  <hr>
 
 
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">Cabinas</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+        aria-selected="false">Últimos alquileres</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTab1Content">
+    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <!--<div class="input-group search">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
+        </div>
+        <input class="form-control" type="text" placeholder="Buscar" aria-label="Input group example" aria-describedby="btnGroupAddon">
+      </div>-->
 
-  <div class="clearfix"></div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-4" *ngFor="let cabin of cabins; index as i">
+          <div class="card text-gray bg-white">
+            <div class="card-body pb-0">
 
-  <div class="input-group search">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
-      </div>
-      <input class="form-control" type="text" placeholder="Buscar" aria-label="Input group example"
-        aria-describedby="btnGroupAddon">
-    </div>
-
-  <div class="row">
-    <div class="col-sm-6 col-lg-4" *ngFor="let cabin of cabins; index as i">
-      <div class="card text-gray bg-white">
-        <div class="card-body pb-0">
-
-            <div class="btn-group float-right nav-item dropdown d-md-down-none" dropdown="">
+              <div class="btn-group float-right nav-item dropdown d-md-down-none" dropdown="">
                 <button class="btn dropdown-toggle p-0" data-toggle="dropdown" id="simple-dropdown" type="button"
                   aria-haspopup="true" aria-expanded="false"><i class="icon cui-settings"></i>
                 </button>
-    
+
                 <div aria-labelledby="simple-dropdown" class="dropdown-menu dropdown-menu-right dropdown-menu-lg" style="left: auto; right: 0px; top: 100%; transform: translateY(0px);">
                   <div class="dropdown-header text-lefts"><strong>Estado</strong></div>
 
-                  <a class="dropdown-item" (click)="updateCabin(i, 'available')"><i class="icon-user-follow text-success"></i><i class="fas fa-circle text-info"></i> Disponible </a>
-                  <a class="dropdown-item" (click)="updateCabin(i, 'unavailable')"><i class="icon-user-unfollow text-danger"></i><i class="fas fa-circle inUse-color"></i>En uso </a>
-                  <a class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-circle available-color"></i>En
-                    mantenimiento </a>
-    
+                  <a class="dropdown-item" (click)="updateCabin(i, 'available')"><i class="icon-user-follow text-success"></i><i
+                      class="fas fa-circle text-info"></i> Disponible </a>
+                  <a class="dropdown-item" (click)="updateCabin(i, 'unavailable')"><i class="icon-user-unfollow text-danger"></i><i
+                      class="fas fa-circle inUse-color"></i>En uso </a>
+                  <a class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i
+                      class="fas fa-circle available-color"></i>En mantenimiento </a>
+                  <!-- <a *ngIf="cabin.status == 'unavailable'" class="dropdown-item" (click)="updateCabin(i, 'maintenance')"><i class="icon-chart text-info"></i><i class="fas fa-sign-out-alt checkout-color"></i>Checkout </a>-->
+
+
                 </div>
               </div>
 
 
-          <div class="text-value">Cabina {{cabin.cabin_number}}</div>
-          <small class="text-muted">{{ cabin.status }}</small>
+              <div class="text-value">Cabina {{cabin.cabin_number}}</div>
+              <small *ngIf="cabin.status == 'available'" class="text-muted">Disponible</small>
+              <small *ngIf="cabin.status == 'unavailable'" class="text-muted">En uso</small>
+              <small *ngIf="cabin.status == 'maintenance'" class="text-muted">En mantenimiento</small>
 
-          <div class="buttons">
-            <add-room-modal *ngIf="cabin.status == 'available'"[cabin]="cabin.id"></add-room-modal>
-            <button *ngIf="cabin.status == 'available'" type="button" class="btn btn-sm btn-outline-info">Objetos perdidos</button>
+              <div class="buttons">
+                <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin" (refresh)="onRefreshCabins($event)"></add-rent-modal>
 
-            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-primary">Ver información</button>
-            <button *ngIf="cabin.status == 'unavailable'" type="button" class="btn btn-sm btn-outline-primary">Objetos perdidos</button>
 
-            
-            <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
-            <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-outline-secondary ">Objetos perdidos</button>
+                <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information>
+                <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefresh($event)"></checkout-modal>
+
+
+                <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver
+                  información</button>
+              </div>
+            </div>
+
           </div>
         </div>
 
+
+        <!--<div class="col-sm-6 col-lg-4">
+            <div class="card text-gray bg-white">
+              <div class="card-body pb-0">
+                <div class="btn-group float-right" dropdown=""><button class="btn dropdown-toggle p-0" dropdowntoggle="" type="button"
+                    aria-haspopup="true"><i class="icon cui-settings"></i></button>
+                </div>
+                <div class="text-value">Cabina 3</div>
+                <small class="text-muted">En proceso de entrega</small>
+      
+                <div class="buttons">
+                  <button type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary ">Objetos perdidos</button>
+                </div>
+              </div>
+      
+            </div>
+          </div>-->
+
+
       </div>
+
     </div>
-
-
-    <!--<div class="col-sm-6 col-lg-4">
-      <div class="card text-gray bg-white">
-        <div class="card-body pb-0">
-          <div class="btn-group float-right" dropdown=""><button class="btn dropdown-toggle p-0" dropdowntoggle="" type="button"
-              aria-haspopup="true"><i class="icon cui-settings"></i></button>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+      <div>
+        <!---
+        <div class="input-group search">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="btnGroupAddon"><i class="icon cui-magnifying-glass"></i></span>
           </div>
-          <div class="text-value">Cabina 3</div>
-          <small class="text-muted">En proceso de entrega</small>
+          <input class="form-control" type="text" placeholder="Buscar" aria-label="Input group example"
+            aria-describedby="btnGroupAddon">
+        </div>-->
 
-          <div class="buttons">
-            <button type="button" class="btn btn-sm btn-secondary text-white">Ver información</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary ">Objetos perdidos</button>
-          </div>
-        </div>
+        <table class="table table-hover">
+          <thead class="red">
+            <tr>
+              <th scope="col"># Cabina</th>
+              <th scope="col">Hora de entrada</th>
+              <th scope="col">Hora de salida</th>
+              <th scope="col">Tiempo contratado</th>
+              <th scope="col">Objetos perdidos</th>
+              <th scope="col">Editar</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let rent of lastRents">
+              <th>{{ rent.cabin_number }}</th>
+              <td>{{ rent.check_in | date:"dd/MM/yyyy - h:mm a " }}</td>
+              <td>{{ rent.check_out | date:"dd/MM/yyyy - h:mm a " }}</td>
+              <td>{{ rent. contracted_time }} horas</td>
+              <td>{{ rent.lost_stuff }}</td>
+              <td>
+                
+                <lost-stuff-modal [rent]="rent" (refresh)="onRefreshLastRents($event)"></lost-stuff-modal>
+                <!---<a class="btn red" href="#">
+                  <i class="icon cui-trash"></i>
+                </a>-->
+              </td>
+            </tr>
+
+
+
+
+          </tbody>
+        </table>
+
 
       </div>
-    </div>-->
 
 
+
+    </div>
   </div>
+
+
+
+  <div class="clearfix"></div>
 
 
   <!-- </div> -->
