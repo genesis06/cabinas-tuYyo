@@ -7,6 +7,8 @@ import { HttpClientModule }    from '@angular/common/http';
 import { AppRoutingModule } from './app.routing';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ModalModule} from 'ngx-bootstrap/modal';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -55,6 +57,7 @@ export function tokenGetter() {
     HttpModule,
     HttpClientModule,
     ModalModule.forRoot(),
+    ProgressbarModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

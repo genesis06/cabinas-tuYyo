@@ -6,6 +6,14 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+.bg-success{
+    background-color: rgb(83, 83, 83) !important;
+}
+
+.bg-danger{
+    background-color: #d25051 !important;
+}
+
 .btn-primary{
     background-color: #ed4357 !important;
     border-color: #ed4357;
