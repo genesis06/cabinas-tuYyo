@@ -23,11 +23,18 @@ export class WorkShiftComponent implements OnInit {
   constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard, private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.initCurrentDate();
     this.initFromDate();
     this.initToDate();
     this.getWorkShifts();
 
     this.currentUsername = this.authGuard.getCurrentUser();
+  }
+
+  initCurrentDate(){
+    let current = new Date();
+
+    this.date = current.getFullYear()+"-"+(current.getMonth()+1)+"-"+current.getDate();
   }
 
   getWorkShifts(search?: boolean){

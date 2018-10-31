@@ -19,10 +19,16 @@ export class ReportComponent implements OnInit {
   constructor(private reportService: ReportService, private toastr: ToastrService) { }
 
   ngOnInit() {
-    
+    this.initCurrentDate();
     this.initFromDate();
     this.initToDate();
     this.getReport();
+  }
+
+  initCurrentDate(){
+    let current = new Date();
+
+    this.date = current.getFullYear()+"-"+(current.getMonth()+1)+"-"+current.getDate();
   }
 
   getReport(search? : boolean){
