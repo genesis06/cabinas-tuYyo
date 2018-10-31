@@ -25,13 +25,19 @@ export class ReportComponent implements OnInit {
     this.getReport();
   }
 
-  getReport(){
+  getReport(search? : boolean){
     this.reportService.getReport(this.fromDate, this.toDate)
     .subscribe(report => {
       this.report = report
 
       if(this.report.length == 0){
-        this.showInfo("No hay reporte de alquileres ni ventas en la fecha ingresada");
+        if(search){
+          this.showInfo("No hay reporte de alquileres ni ventas en la fecha ingresada");
+        }
+        else{
+          this.showInfo("No hay reporte de alquileres ni ventas el día de hoy");
+        }
+        
       }
       
       //console.log(report);
@@ -51,7 +57,7 @@ export class ReportComponent implements OnInit {
     this.fromDate = this.getFromDate();
     this.toDate = this.getToDate();
 
-    this.getReport();
+    this.getReport(true);
   }
 
   initFromDate(){

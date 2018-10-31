@@ -30,13 +30,19 @@ export class WorkShiftComponent implements OnInit {
     this.currentUsername = this.authGuard.getCurrentUser();
   }
 
-  getWorkShifts(){
+  getWorkShifts(search?: boolean){
     this.workShiftService.getWorkShifts(this.fromDate, this.toDate)
     .subscribe(workShifts => {
       this.workShifts = workShifts;
 
       if(this.workShifts.length == 0){
-        this.showInfo("No hay turnos registrados en la fecha ingresada");
+        if(search){
+          this.showInfo("No hay turnos registrados en la fecha ingresada");
+        }
+        else{
+          this.showInfo("No hay turnos registrados el día de hoy");
+        }
+        
       }
     //  console.log(new Date(JSON.parse(users[0].start_time)));
       //console.log(workShifts);
@@ -99,7 +105,7 @@ export class WorkShiftComponent implements OnInit {
   search(){
     this.fromDate = this.getFromDate();
     this.toDate = this.getToDate();
-    this.getWorkShifts();
+    this.getWorkShifts(true);
   }
 
   showSuccess() {
