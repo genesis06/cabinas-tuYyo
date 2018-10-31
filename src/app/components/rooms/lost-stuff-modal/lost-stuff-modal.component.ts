@@ -53,17 +53,39 @@ export class LostStuffModalComponent implements OnInit {
     this.isModal = false;
   }
 
+  validVehicules(){
+    let valid = true;
+
+
+    if(this.vehicules.length == 0 ){
+      valid = false;
+      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado.");
+    }
+    else if(this.vehicules.length >= 1  ){  
+      
+      for (let index = 0; index < this.vehicules.length; index++) {
+
+        if(this.vehicules[index].type == "" ){
+          this.showWarning("Los campos de tipo de vehículo son obligatorios.");
+          valid = false;
+          break;
+        }
+        
+      }
+    }
+
+    return valid;
+  }
+
   addVehicule(){
     this.vehicules.push( new Vehicule("","", false));
   }
 
   removeVehicule(index: number, id:number){
     if(id == undefined){
-      console.log("undefined");
       this.vehicules.splice(index,1); // deletes new one
     }
     else{
-      console.log("deleted true");
       this.vehicules[index].deleted = true; //needs to be deleted on db
     }
     
@@ -75,24 +97,27 @@ export class LostStuffModalComponent implements OnInit {
 
   postLostStuff(){
 
-    this.updateVehicules();
-    console.log(this.rent.vehicules);
-    this.rentService.postLostStuff(this.rent)
-      .subscribe(
-          (data) => {
-            //console.log(data);
-            //this.resetValues();
-            this.showSuccess();
-            this.refreshed();
-            this.lgModal.hide();
-          },
-          (error) => {
-            //console.info("response error "+JSON.stringify(error,null,4));
+    if( this.validVehicules()){
+
+      this.updateVehicules();
+      //console.log(this.rent.vehicules);
+      this.rentService.postLostStuff(this.rent)
+        .subscribe(
+            (data) => {
+              //console.log(data);
               //this.resetValues();
-            this.showError();
-            this.lgModal.hide();
-          }
-      );
+              this.showSuccess();
+              this.refreshed();
+              this.lgModal.hide();
+            },
+            (error) => {
+              //console.info("response error "+JSON.stringify(error,null,4));
+                //this.resetValues();
+              this.showError();
+              this.lgModal.hide();
+            }
+        );
+    }
   }
 
   refreshed(){
@@ -101,6 +126,10 @@ export class LostStuffModalComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success("Información de alquiler actualizada", "Exitoso");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
   showInfo() {
