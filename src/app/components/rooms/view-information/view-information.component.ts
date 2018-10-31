@@ -33,7 +33,7 @@ export class ViewInformationComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
-    this.showInfo();
+    this.showInfo("Información sin actualizar");
     this.resetValues();
   }
 
@@ -58,6 +58,12 @@ export class ViewInformationComponent implements OnInit {
           },
           (error) => {
               //console.info("response error "+JSON.stringify(error,null,4));
+              if(error.status ==409){
+                this.showInfo("La cabina no se encuentra alquilada");
+              }
+              else{
+                this.showError("No se pudo obtener información del alquiler");
+              }
               this.resetValues();
           }
       );
@@ -83,7 +89,9 @@ export class ViewInformationComponent implements OnInit {
           },
           (error) => {
               //console.info("response error "+JSON.stringify(error,null,4));
-              this.showError();
+              
+              this.showError("No se pudo actualizar la información");
+              
               this.resetValues();
               this.lgModal.hide();
           }
@@ -153,12 +161,12 @@ export class ViewInformationComponent implements OnInit {
     this.toastr.warning(message, "Advertencia");
   }
 
-  showInfo() {
-    this.toastr.info("Información sin actualizar", "Info");
+  showInfo(message: string) {
+    this.toastr.info(message, "Info");
   }
 
-  showError() {
-    this.toastr.error("No se pudo actualizar la información", "Error");
+  showError(message: string) {
+    this.toastr.error(message, "Error");
   }
 
  

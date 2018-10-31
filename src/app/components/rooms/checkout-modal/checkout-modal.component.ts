@@ -28,7 +28,7 @@ export class CheckoutModalComponent implements OnInit {
 
   hideModal(){
     this.lgModal.hide();
-    this.showInfo();
+    this.showInfo("Salida sin registrar");
   }
 
   public showModal():void {
@@ -52,7 +52,13 @@ export class CheckoutModalComponent implements OnInit {
           (error) => {
             console.info("response error "+JSON.stringify(error,null,4));
             //this.resetValues();
-            this.showError();
+            if(error.status ==409){
+              this.showInfo("La cabina no se encuentra alquilada");
+            }
+            else{
+              this.showError();
+            }
+            
             this.lgModal.hide();
           }
       );
@@ -66,8 +72,8 @@ export class CheckoutModalComponent implements OnInit {
     this.toastr.success("Salida registrada de la cabina #"+this.cabin.cabin_number, "Exitoso");
   }
 
-  showInfo() {
-    this.toastr.info("Salida sin registrar", "Info");
+  showInfo(message: string) {
+    this.toastr.info(message, "Info");
   }
 
   showError() {
