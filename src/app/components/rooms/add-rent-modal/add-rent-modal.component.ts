@@ -64,6 +64,10 @@ export class AddRentModalComponent implements OnInit {
     this.vehicules.push( new Vehicule("","", false));
   }
 
+  removeVehicule(index: number){
+    this.vehicules.splice(index,1); 
+  }
+
   changeTime(index: number){
     this.selectedTime = this.contractedTimes[index];
   }
