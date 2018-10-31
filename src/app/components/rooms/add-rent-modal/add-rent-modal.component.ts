@@ -61,7 +61,7 @@ export class AddRentModalComponent implements OnInit {
   }
 
   addVehicule(){
-    this.vehicules.push( new Vehicule("",""));
+    this.vehicules.push( new Vehicule("","", false));
   }
 
   changeTime(index: number){

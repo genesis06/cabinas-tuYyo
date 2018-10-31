@@ -71,10 +71,9 @@ export class ViewInformationComponent implements OnInit {
     //console.log(this.rent.vehicules);
 
     if( this.validVehicules()){
-      console.log(this.vehicules);
 
       this.updateVehicules();
-     /* this.rentService.updateRent(this.rent)
+      this.rentService.updateRent(this.rent)
       .subscribe(
           (data) => {
             //console.log(data);
@@ -88,7 +87,7 @@ export class ViewInformationComponent implements OnInit {
               this.resetValues();
               this.lgModal.hide();
           }
-      );*/
+      );
     }
     
     
@@ -122,8 +121,16 @@ export class ViewInformationComponent implements OnInit {
     this.vehicules.push( new Vehicule("","", false));
   }
 
-  removeVehicule(index: number){
-    this.vehicules[index].deleted = true;
+  removeVehicule(index: number, id:number){
+    if(id == undefined){
+      //console.log("undefined");
+      this.vehicules.splice(index,1); // deletes new one
+    }
+    else{
+      //console.log("deleted true");
+      this.vehicules[index].deleted = true; //needs to be deleted on db
+    }
+    
   }
 
   changeTime(index: number){
@@ -132,8 +139,6 @@ export class ViewInformationComponent implements OnInit {
 
   updateVehicules(){
     this.rent.vehicules = this.vehicules;
-
-    console.log(this.rent.vehicules);
   }
 
   resetValues(){

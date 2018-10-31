@@ -22,18 +22,18 @@
 
           <div class="clearfix"></div>
           <div *ngFor="let vehicule of vehicules; index as i;">
-              <div class="float-left">
+              <div class="float-left" [hidden]="vehicule.deleted">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-car "></i></span>
                   </div> 
                   <input type="text" class="form-control" [(ngModel)]="vehicule.type" placeholder="Tipo de vehículo" aria-label="Username"  
                     aria-describedby="basic-addon1"> 
-                    <div *ngIf="i != 0" (click)="removeVehicule(i)"><i class="far fa-times-circle"></i></div>
+                    <div *ngIf="i != 0" (click)="removeVehicule(i, vehicule.id)"><i class="far fa-times-circle" ></i></div>
                 </div>
               </div>
       
-              <div class="float-right">
+              <div class="float-right" [hidden]="vehicule.deleted">
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-car "></i></span>
