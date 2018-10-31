@@ -19,6 +19,8 @@ export class EditWorkShiftModalComponent implements OnInit {
 
   public newWorkShift: WorkShift;
   public isModal:boolean = false;
+  
+  public moneyDelivered: number;
 
   public bill1000: number;
   public bill2000: number;
@@ -38,6 +40,7 @@ export class EditWorkShiftModalComponent implements OnInit {
     this.bill10000 = 0;
     this.bill20000 = 0;
     this.bill50000 = 0;
+    this.moneyDelivered = 0;
   }
 
   sumBills(){
@@ -53,12 +56,13 @@ export class EditWorkShiftModalComponent implements OnInit {
 
   updateWorkShift(){
 
-    this.newWorkShift.money_delivered = this.sumBills();
+    this.newWorkShift.money_delivered = this.sumBills() == 0 ? this.moneyDelivered : this.sumBills();
     
-    this.workShiftService.updateWorkShift(this.newWorkShift)
+    if( this.validFields()){
+
+      this.workShiftService.updateWorkShift(this.newWorkShift)
       .subscribe(
           (data) => {
-            console.log(data);
            // this.resetValues();
            this.showSuccess();
             this.refreshed();
@@ -71,6 +75,25 @@ export class EditWorkShiftModalComponent implements OnInit {
              this.lgModal.hide();
           }
       );
+    } 
+  }
+
+  validFields(){
+    if(this.sumBills() == 0 && this.moneyDelivered == 0 && this.newWorkShift.money_received == 0){
+      this.showWarning("Ingrese los montos del dinero recibido y el dinero entregado");
+      return false;
+    }
+    else if(this.newWorkShift.money_received == 0 || this.newWorkShift.money_received == null){
+      this.showWarning("Ingrese el monto del dinero recibido");
+      return false;
+    }
+    else if(this.sumBills() == 0 && (this.moneyDelivered == 0 || this.moneyDelivered == null)){
+      this.showWarning("Ingrese el monto del dinero entregado");
+      return false;
+    }
+    else{
+      return true;
+    }
   }
 
 
@@ -94,6 +117,10 @@ export class EditWorkShiftModalComponent implements OnInit {
 
   showSuccess() {
     this.toastr.success("El cambio de turno fue realizado", "Exitoso");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
   showInfo() {

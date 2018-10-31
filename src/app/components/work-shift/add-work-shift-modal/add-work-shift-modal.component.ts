@@ -17,6 +17,8 @@ export class AddWorkShiftModalComponent implements OnInit {
   
   public isModal:boolean = false;
 
+  public moneyReceived: number;
+
   public bill1000: number;
   public bill2000: number;
   public bill5000: number;
@@ -34,6 +36,7 @@ export class AddWorkShiftModalComponent implements OnInit {
     this.bill10000 = 0;
     this.bill20000 = 0;
     this.bill50000 = 0;
+    this.moneyReceived = 0;
   }
 
   sumBills(){
@@ -49,13 +52,13 @@ export class AddWorkShiftModalComponent implements OnInit {
 
   createWorkShift(){
 
-    let moneyReceived = this.sumBills();
+    let moneyReceived = this.sumBills() == 0 ? this.moneyReceived : this.sumBills();
     let currentUsername = this.authGuard.getCurrentUser();
-    
-    this.workShiftService.createWorkShift(moneyReceived, currentUsername)
+
+    if( this.validFields()){
+      this.workShiftService.createWorkShift(moneyReceived, currentUsername)
       .subscribe(
           (data) => {
-            console.log(data);
             this.showSuccess();
             this.refreshed();
            // this.resetValues();
@@ -68,6 +71,19 @@ export class AddWorkShiftModalComponent implements OnInit {
             this.lgModal.hide();
           }
       );
+    }
+    
+    
+  }
+
+  validFields(){
+    if(this.sumBills() == 0 && (this.moneyReceived == 0 || this.moneyReceived == null)){
+      this.showWarning("Ingrese el monto del dinero recibido");
+      return false;
+    }else{
+      
+      return true;
+    }
   }
 
   refreshed(){
@@ -98,6 +114,10 @@ export class AddWorkShiftModalComponent implements OnInit {
 
   showError() {
     this.toastr.error("No se pudo agregar el turno", "Error");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
  

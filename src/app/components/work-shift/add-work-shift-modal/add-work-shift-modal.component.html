@@ -19,7 +19,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"><i class="fa fa-dollar-sign"></i></span>
                 </div>
-                <input type="number" class="form-control" placeholder="Dinero recibido" value="{{ sumBills() }}">
+                <input type="number" class="form-control" [(ngModel)]="moneyReceived" placeholder="Dinero recibido" value="{{ sumBills() }}">
               </div>
         </div>
         
