@@ -54,7 +54,19 @@ export class LostStuffModalComponent implements OnInit {
   }
 
   addVehicule(){
-    this.vehicules.push( new Vehicule("",""));
+    this.vehicules.push( new Vehicule("","", false));
+  }
+
+  removeVehicule(index: number, id:number){
+    if(id == undefined){
+      console.log("undefined");
+      this.vehicules.splice(index,1); // deletes new one
+    }
+    else{
+      console.log("deleted true");
+      this.vehicules[index].deleted = true; //needs to be deleted on db
+    }
+    
   }
 
   updateVehicules(){
