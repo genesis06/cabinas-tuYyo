@@ -97,6 +97,9 @@ export class RoomsComponent implements OnInit {
       .subscribe(
           (rents) => {
             this.nextCheckouts = rents;
+            if(this.nextCheckouts.length == 0){
+              this.showInfo("No se visualizan salidas en la última hora");
+            }
             //console.log(rents);
           },
           (error) => {
