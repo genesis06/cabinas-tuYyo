@@ -44,11 +44,11 @@
       <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
         aria-selected="true">Cabinas</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" (click)="getNextCheckouts()">
         <a class="nav-link" id="next-tab" data-toggle="tab" href="#next" role="tab" aria-controls="next"
           aria-selected="false">Próximas salidas</a>
       </li>
-    <li class="nav-item">
+    <li class="nav-item" >
       <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
         aria-selected="false">Últimos alquileres</a>
     </li>
@@ -154,10 +154,10 @@
             </thead>
             <tbody>
   
-              <tr *ngFor="let rent of lastRents">
+              <tr *ngFor="let rent of nextCheckouts">
                 <th>{{ rent.cabin_number }}</th>
                 <td>{{ rent.check_in | date:"dd/MM/yyyy - h:mm a " }}</td>
-                <td>{{ rent.check_out | date:"dd/MM/yyyy - h:mm a " }}</td>
+                <td>{{ rent.estimated_checkout | date:"dd/MM/yyyy - h:mm a " }}</td>
                 <td>{{ rent. contracted_time }} horas</td>
                 
               </tr>

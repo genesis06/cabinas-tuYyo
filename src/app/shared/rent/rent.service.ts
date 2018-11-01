@@ -23,6 +23,12 @@ export class RentService {
       );
   }
 
+  getNextCheckouts(fromDate: string, toDate:string): Observable<any[]>{
+    console.log((Config.cabin_url+Config.cabin_base+"/nextCheckouts?fromDate="+fromDate+"&toDate="+toDate));
+    return this._http.get<any[]>(Config.cabin_url+Config.cabin_base+"/nextCheckouts?fromDate="+fromDate+"&toDate="+toDate, httpOptions).pipe();
+  
+  }
+
   createRent(rent: Rent){
     return this._http.post(
       Config.cabin_url+Config.cabin_base+"/rents", 
