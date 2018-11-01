@@ -34,6 +34,7 @@ export class AddRentModalComponent implements OnInit {
   ngOnInit() {
     this.addVehicule();
     this.rent = new Rent();
+    
   }
 
 
@@ -77,7 +78,8 @@ export class AddRentModalComponent implements OnInit {
     this.rent.vehicules = this.vehicules;
     this.rent.contracted_time = this.selectedTime;
     this.rent.check_in = this.getCheckInDate();
-    //console.log(this.rent);
+    this.rent.estimated_checkout = this.getEstimatedCheckout();
+    console.log(this.rent);
   }
 
   getCheckInDate(){
@@ -89,6 +91,11 @@ export class AddRentModalComponent implements OnInit {
     }
     //console.log(date);
     return JSON.stringify(date);
+  }
+
+  getEstimatedCheckout(){
+    let date = new Date();
+    return JSON.stringify(new Date(date.setHours(date.getHours()+this.rent.contracted_time)));
   }
 
   addRent(){
