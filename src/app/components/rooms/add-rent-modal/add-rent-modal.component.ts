@@ -79,7 +79,7 @@ export class AddRentModalComponent implements OnInit {
     this.rent.contracted_time = this.selectedTime;
     this.rent.check_in = this.getCheckInDate();
     this.rent.estimated_checkout = this.getEstimatedCheckout();
-    console.log(this.rent);
+    //console.log(this.rent);
   }
 
   getCheckInDate(){

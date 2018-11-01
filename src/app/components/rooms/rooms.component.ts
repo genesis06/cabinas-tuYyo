@@ -26,9 +26,6 @@ export class RoomsComponent implements OnInit {
     this.initDashboard();
     this.getCabins();
     this.getRents();
-
-    console.log(this.initFromDate());
-    console.log(this.initToDate());
   }
 
   
@@ -100,7 +97,7 @@ export class RoomsComponent implements OnInit {
       .subscribe(
           (rents) => {
             this.nextCheckouts = rents;
-            console.log(rents);
+            //console.log(rents);
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
