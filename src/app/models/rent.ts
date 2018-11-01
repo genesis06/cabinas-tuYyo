@@ -11,6 +11,8 @@ export class Rent{
     public necessary_repairs: string;
     public observations: string;
     public lost_stuff: string;
+    public sales_check: boolean;
+    public estimated_checkout: string;
 
     constructor(){
         this.id = 0;
@@ -22,5 +24,7 @@ export class Rent{
         this.necessary_repairs = "";
         this.observations = "";
         this.lost_stuff = "";
+        this.sales_check = false;
+        this.estimated_checkout = ""
     }
 }

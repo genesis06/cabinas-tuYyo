@@ -23,6 +23,12 @@ export class RentService {
       );
   }
 
+  getNextCheckouts(fromDate: string, toDate:string): Observable<any[]>{
+    console.log((Config.cabin_url+Config.cabin_base+"/nextCheckouts?fromDate="+fromDate+"&toDate="+toDate));
+    return this._http.get<any[]>(Config.cabin_url+Config.cabin_base+"/nextCheckouts?fromDate="+fromDate+"&toDate="+toDate, httpOptions).pipe();
+  
+  }
+
   createRent(rent: Rent){
     return this._http.post(
       Config.cabin_url+Config.cabin_base+"/rents", 
@@ -32,7 +38,9 @@ export class RentService {
         contracted_time: rent.contracted_time,
         vehicules: rent.vehicules,
         observations: rent.observations,
-        necessary_repairs: rent.necessary_repairs
+        necessary_repairs: rent.necessary_repairs,
+        sales_check: rent.sales_check,
+        estimated_checkout: rent.estimated_checkout
       }), 
       httpOptions
       );
@@ -62,7 +70,8 @@ export class RentService {
         contracted_time: rent.contracted_time,
         vehicules: rent.vehicules,
         observations: rent.observations,
-        necessary_repairs: rent.necessary_repairs
+        necessary_repairs: rent.necessary_repairs,
+        sales_check: rent.sales_check
       }), 
       httpOptions
       );

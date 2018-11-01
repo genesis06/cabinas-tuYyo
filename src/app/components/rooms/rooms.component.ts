@@ -14,6 +14,7 @@ export class RoomsComponent implements OnInit {
 
   public cabins: Array<Cabin>;
   public lastRents: Array<any>;
+  public nextCheckouts: Array<any>;
 
   public availables: number;
   public unavailables: number;
@@ -85,6 +86,39 @@ export class RoomsComponent implements OnInit {
               console.info("response error "+JSON.stringify(error,null,4));
           }
       );
+  }
+
+  getNextCheckouts(){
+
+    let fromDate = '2018-11-01T06:00:00.000Z';//this.initFromDate();
+    let toDate = '2018-11-01T07:00:00.000Z';//this.initToDate();
+    
+    this.rentService.getNextCheckouts(fromDate, toDate)
+      .subscribe(
+          (rents) => {
+            this.nextCheckouts = rents;
+            //console.log(rents);
+          },
+          (error) => {
+              console.info("response error "+JSON.stringify(error,null,4));
+          }
+      );
+  }
+
+  initFromDate(){
+    let current = new Date();
+    current.setHours(current.getHours(),0,0,0);
+
+    let date = JSON.stringify(current).toString();
+    return date.substring(1,date.length-1); //Remove "" characters
+  }
+
+  initToDate(){
+    let current = new Date();
+    current.setHours(current.getHours()+1,0,0,0);
+
+    let date = JSON.stringify(current).toString();
+    return date.substring(1,date.length-1); //Remove "" characters
   }
 
   onRefreshCabins(refresh){
