@@ -90,8 +90,8 @@ export class RoomsComponent implements OnInit {
 
   getNextCheckouts(){
 
-    let fromDate = '2018-11-01T06:00:00.000Z';//this.initFromDate();
-    let toDate = '2018-11-01T07:00:00.000Z';//this.initToDate();
+    let fromDate = this.initFromDate();//'2018-11-01T06:00:00.000Z';
+    let toDate = this.initToDate();//'2018-11-01T07:00:00.000Z';
     
     this.rentService.getNextCheckouts(fromDate, toDate)
       .subscribe(
