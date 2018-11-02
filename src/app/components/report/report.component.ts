@@ -28,7 +28,10 @@ export class ReportComponent implements OnInit {
   initCurrentDate(){
     let current = new Date();
 
-    this.date = current.getFullYear()+"-"+(current.getMonth()+1)+"-"+current.getDate();
+    let date = current.getDate() < 10? "0"+current.getDate() : current.getDate();
+    let month = (current.getMonth()+1) < 10 ? "0"+(current.getMonth()+1) : (current.getMonth()+1);
+
+    this.date = current.getFullYear()+"-"+ month +"-"+ date;
   }
 
   getReport(search? : boolean){

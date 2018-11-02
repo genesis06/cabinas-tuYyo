@@ -33,8 +33,11 @@ export class WorkShiftComponent implements OnInit {
 
   initCurrentDate(){
     let current = new Date();
+    
+    let date = current.getDate() < 10? "0"+current.getDate() : current.getDate();
+    let month = (current.getMonth()+1) < 10 ? "0"+(current.getMonth()+1) : (current.getMonth()+1);
 
-    this.date = current.getFullYear()+"-"+(current.getMonth()+1)+"-"+current.getDate();
+    this.date = current.getFullYear()+"-"+ month +"-"+ date;
   }
 
   getWorkShifts(search?: boolean){
