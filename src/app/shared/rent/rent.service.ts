@@ -77,14 +77,15 @@ export class RentService {
       );
   }
 
-  checkout(cabin: Cabin){
+  checkout(cabin: Cabin,vehicules: Array<Vehicule>){
     
     return this._http.put(
       Config.cabin_url+Config.cabin_base+"/cabins/"+cabin.id+"/rents/checkout", 
       {
         id: cabin.id,
         cabin_number: cabin.cabin_number,
-        check_out: JSON.stringify(new Date())
+        check_out: JSON.stringify(new Date()),
+        vehicules: vehicules
       }, 
       httpOptions
       );

@@ -12,6 +12,40 @@
 
       <div class="modal-body">
           <label>¿Seguro que desea registrar la salida del cliente?</label>
+
+          <div>
+      
+             <div class="mb-3 float-right">
+                <button type="button" class="btn btn-sm btn-outline-primary" (click)="addVehicule()">Agregar vehículo</button>
+              </div>
+            </div>
+  
+            <div class="clearfix"></div>
+          <div *ngFor="let vehicule of vehicules; index as iv;">
+              <div class="float-left" [hidden]="vehicule.deleted">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-car"></i></span>
+                      </div>
+                          <button class="form-control dropdown-toggle text-left width-drop" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-describedby="basic-addon1" aria-haspopup="true" aria-expanded="false">
+                            {{ vehicule.type ? getVehiculeType(vehicule.type) : 'Tipo de vehículo' }}
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" *ngFor="let type of vehiculeTypes; index as ivt" (click)="addVehiculeType(iv, type.id)">{{ type.name }}</a>
+                          </div>
+                          <div *ngIf="iv != 0" (click)="removeVehicule(iv, vehicule.id)"><i class="far fa-times-circle" ></i></div>
+                    </div>
+              </div>
+      
+              <div class="float-right" [hidden]="vehicule.deleted">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-car "></i></span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="vehicule.license_plate" placeholder="Número de placa" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cerrar</button>

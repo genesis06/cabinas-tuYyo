@@ -98,7 +98,7 @@
 
 
                 <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id" [vehiculeTypes]="vehicules"></view-information>
-                <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefresh($event)"></checkout-modal>
+                <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefresh($event)" [vehiculeTypes]="vehicules"></checkout-modal>
 
 
                 <button *ngIf="cabin.status == 'maintenance'" type="button" class="btn btn-sm btn-secondary text-white">Ver

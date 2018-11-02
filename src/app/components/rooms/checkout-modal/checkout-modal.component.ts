@@ -4,6 +4,9 @@ import { Rent } from 'src/app/models/rent';
 import { RentService } from 'src/app/shared/rent/rent.service';
 import { Cabin } from 'src/app/models/cabin';
 import { ToastrService } from 'ngx-toastr';
+import { VehiculeType } from 'src/app/models/vehicule_type';
+import { Vehicule } from 'src/app/models/vehicule';
+import * as _ from "lodash";
 
 @Component({
   selector: 'checkout-modal',
@@ -17,7 +20,11 @@ export class CheckoutModalComponent implements OnInit {
   
   public isModal:boolean = false;
   @Input("cabin") public cabin: Cabin;
+  @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   @Output() refresh = new EventEmitter<boolean>();
+
+  public vehicules: Array<Vehicule> = [];
+  public rent = new Rent();
 
   constructor(private rentService: RentService, private toastr: ToastrService) {
    }
@@ -33,17 +40,41 @@ export class CheckoutModalComponent implements OnInit {
 
   public showModal():void {
     this.isModal = true;
+    this.rent = new Rent();
+    this.getRent();
   }
 
   public onHidden():void {
     this.isModal = false;
   }
 
-  checkout(){
-    this.rentService.checkout(this.cabin)
+  getRent(){
+    
+    this.rentService.getRent(this.cabin.id)
       .subscribe(
           (data) => {
-            console.log(data);
+            this.rent = data;
+            this.vehicules = _.cloneDeep(this.rent.vehicules);
+            //console.log(data);
+          },
+          (error) => {
+              //console.info("response error "+JSON.stringify(error,null,4));
+              if(error.status ==409){
+                this.showInfo("La cabina no se encuentra alquilada");
+              }
+              else{
+                this.showError("No se pudo obtener información del alquiler");
+              }
+              this.resetValues();
+          }
+      );
+  }
+  
+
+  checkout(){
+    this.rentService.checkout(this.cabin, this.vehicules)
+      .subscribe(
+          (data) => {
             //this.resetValues();
             this.showSuccess();
             this.refreshed();
@@ -56,12 +87,33 @@ export class CheckoutModalComponent implements OnInit {
               this.showInfo("La cabina no se encuentra alquilada");
             }
             else{
-              this.showError();
+              this.showError("No se pudo registrar la salida");
             }
             
             this.lgModal.hide();
           }
       );
+  }
+
+  resetValues(){
+    this.vehicules = [];
+  }
+
+  addVehiculeType(index: number, typeID: number){
+    this.vehicules[index].type = typeID;
+  }
+
+  getVehiculeType(typeID){
+    let typeName = "";
+
+    for (let index = 0; index < this.vehiculeTypes.length; index++) {
+      if(this.vehiculeTypes[index].id == typeID){
+        typeName = this.vehiculeTypes[index].name;
+        break;
+      }
+    }
+
+    return typeName;
   }
 
   refreshed(){
@@ -76,8 +128,8 @@ export class CheckoutModalComponent implements OnInit {
     this.toastr.info(message, "Info");
   }
 
-  showError() {
-    this.toastr.error("No se pudo registrar la salida", "Error");
+  showError(message: string) {
+    this.toastr.error(message, "Error");
   }
 
 }
