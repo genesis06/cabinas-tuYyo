@@ -65,7 +65,7 @@ export class LostStuffModalComponent implements OnInit {
       
       for (let index = 0; index < this.vehicules.length; index++) {
 
-        if(this.vehicules[index].type == "" ){
+        if(this.vehicules[index].type == 0){
           this.showWarning("Los campos de tipo de vehículo son obligatorios.");
           valid = false;
           break;
@@ -78,7 +78,7 @@ export class LostStuffModalComponent implements OnInit {
   }
 
   addVehicule(){
-    this.vehicules.push( new Vehicule("","", false));
+    this.vehicules.push( new Vehicule(0,"", false));
   }
 
   removeVehicule(index: number, id:number){

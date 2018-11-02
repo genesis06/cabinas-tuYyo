@@ -3,29 +3,33 @@ import { CabinService } from '../../shared/cabin/cabin.service';
 import { Cabin } from '../../models/cabin';
 import { RentService } from 'src/app/shared/rent/rent.service';
 import { ToastrService } from 'ngx-toastr';
+import { VehiculeTypeService } from 'src/app/shared/vehicule-type/vehicule-type.service';
+import { VehiculeType } from 'src/app/models/vehicule_type';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
-  providers: [CabinService, RentService]
+  providers: [CabinService, RentService, VehiculeTypeService]
 })
 export class RoomsComponent implements OnInit {
 
   public cabins: Array<Cabin>;
   public lastRents: Array<any>;
   public nextCheckouts: Array<any>;
+  public vehicules: Array<VehiculeType>;
 
   public availables: number;
   public unavailables: number;
   public maintenance: number;
 
-  constructor(private cabinService: CabinService, private rentService: RentService, private toastr: ToastrService) { }
+  constructor(private cabinService: CabinService, private rentService: RentService,private vehiculeTypeService: VehiculeTypeService, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.initDashboard();
     this.getCabins();
     this.getRents();
+    this.getVehiculeTypes();
   }
 
   
@@ -37,6 +41,17 @@ export class RoomsComponent implements OnInit {
       this.initDashboard();
       this.updateDashboard();
       //console.log(cabins);
+    });
+  }
+
+  getVehiculeTypes(){
+    this.vehiculeTypeService.getVehiculeTypes()
+    .subscribe(vehicules => {
+      this.vehicules = vehicules
+      //console.log(articules);
+    },
+    (error) => {
+      //console.info("response error "+JSON.stringify(error,null,4));
     });
   }
 

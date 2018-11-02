@@ -5,6 +5,7 @@ import { RentService } from '../../../shared/rent/rent.service';
 import { Rent } from '../../../models/rent';
 import { ToastrService } from 'ngx-toastr';
 import { Cabin } from 'src/app/models/cabin';
+import { VehiculeType } from 'src/app/models/vehicule_type';
 
 @Component({
   selector: 'add-rent-modal',
@@ -26,6 +27,7 @@ export class AddRentModalComponent implements OnInit {
   public rent: Rent;
 
   @Input('cabin') public cabin: Cabin;
+  @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   @Output() refresh = new EventEmitter<boolean>();
 
   constructor(private rentService: RentService, private toastr: ToastrService) {
@@ -62,11 +64,28 @@ export class AddRentModalComponent implements OnInit {
   }
 
   addVehicule(){
-    this.vehicules.push( new Vehicule("","", false));
+    this.vehicules.push( new Vehicule(0,"", false));
   }
 
   removeVehicule(index: number){
     this.vehicules.splice(index,1); 
+  }
+
+  addVehiculeType(index: number, typeID: number){
+    this.vehicules[index].type = typeID;
+  }
+
+  getVehiculeType(typeID){
+    let typeName = "";
+
+    for (let index = 0; index < this.vehiculeTypes.length; index++) {
+      if(this.vehiculeTypes[index].id == typeID){
+        typeName = this.vehiculeTypes[index].name;
+        break;
+      }
+    }
+
+    return typeName;
   }
 
   changeTime(index: number){
@@ -129,7 +148,7 @@ export class AddRentModalComponent implements OnInit {
     let valid = true;
 
     if(this.invalidVehicules() && this.selectedTime == undefined){
-      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado y el tiempo contratado.");  valid = false;
+      this.showWarning("Se requiere los campos de tipo de vehículo y el tiempo contratado.");  valid = false;
     }
     else if( this.invalidVehicules() ){
       this.showWarning("Se requiere al menos 1 tipo de vehículo registrado."); 
@@ -149,8 +168,19 @@ export class AddRentModalComponent implements OnInit {
     if(this.vehicules.length == 0 ){
       invalid = true;
     }
-    else if(this.vehicules.length == 1 && this.vehicules[0].type == "" ){
+    else if(this.vehicules.length == 1 && this.vehicules[0].type == 0){
       invalid = true;
+    }
+    else if(this.vehicules.length >= 1  ){  
+      
+      for (let index = 0; index < this.vehicules.length; index++) {
+
+        if(this.vehicules[index].type == 0){
+          invalid = true;
+          break;
+        }
+        
+      }
     }
 
     return invalid;
