@@ -5,6 +5,7 @@ import { RentService } from '../../../shared/rent/rent.service';
 import { Vehicule } from 'src/app/models/vehicule';
 import * as _ from "lodash";
 import { ToastrService } from 'ngx-toastr';
+import { VehiculeType } from 'src/app/models/vehicule_type';
 
 @Component({
   selector: 'view-information',
@@ -18,6 +19,7 @@ export class ViewInformationComponent implements OnInit {
   public isModal:boolean = false;
 
   @Input("cabinID") public cabinID: number;
+  @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   public rent = new Rent();
 
   public vehicules: Array<Vehicule> = [];
@@ -131,14 +133,31 @@ export class ViewInformationComponent implements OnInit {
 
   removeVehicule(index: number, id:number){
     if(id == undefined){
-      //console.log("undefined");
+      console.log("undefined");
       this.vehicules.splice(index,1); // deletes new one
     }
     else{
-      //console.log("deleted true");
+      console.log("deleted true");
       this.vehicules[index].deleted = true; //needs to be deleted on db
     }
     
+  }
+
+  addVehiculeType(index: number, typeID: number){
+    this.vehicules[index].type = typeID;
+  }
+
+  getVehiculeType(typeID){
+    let typeName = "";
+
+    for (let index = 0; index < this.vehiculeTypes.length; index++) {
+      if(this.vehiculeTypes[index].id == typeID){
+        typeName = this.vehiculeTypes[index].name;
+        break;
+      }
+    }
+
+    return typeName;
   }
 
   changeTime(index: number){

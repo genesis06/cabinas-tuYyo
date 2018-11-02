@@ -97,7 +97,7 @@
                 <add-rent-modal *ngIf="cabin.status == 'available'" [cabin]="cabin" [vehiculeTypes]="vehicules" (refresh)="onRefreshCabins($event)"></add-rent-modal>
 
 
-                <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id"></view-information>
+                <view-information *ngIf="cabin.status == 'unavailable'" [cabinID]="cabin.id" [vehiculeTypes]="vehicules"></view-information>
                 <checkout-modal *ngIf="cabin.status == 'unavailable'" [cabin]="cabin" (refresh)="onRefresh($event)"></checkout-modal>
 
 
