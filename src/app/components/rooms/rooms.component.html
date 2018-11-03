@@ -206,7 +206,7 @@
               <td>{{ rent.lost_stuff }}</td>
               <td>
                 
-                <lost-stuff-modal [rent]="rent" (refresh)="onRefreshLastRents($event)"></lost-stuff-modal>
+                <lost-stuff-modal [rent]="rent" (refresh)="onRefreshLastRents($event)" [vehiculeTypes]="vehicules"></lost-stuff-modal>
                 <!---<a class="btn red" href="#">
                   <i class="icon cui-trash"></i>
                 </a>-->

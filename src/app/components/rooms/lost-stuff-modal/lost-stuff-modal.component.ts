@@ -5,6 +5,7 @@ import { Rent } from 'src/app/models/rent';
 import * as _ from "lodash";
 import { Vehicule } from 'src/app/models/vehicule';
 import { ToastrService } from 'ngx-toastr';
+import { VehiculeType } from 'src/app/models/vehicule_type';
 
 @Component({
   selector: 'lost-stuff-modal',
@@ -20,6 +21,7 @@ export class LostStuffModalComponent implements OnInit {
   public vehicules: Array<Vehicule>;
 
   @Input("rent") public oldRent: any;
+  @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   @Output() refresh = new EventEmitter<boolean>();
   
 
@@ -89,6 +91,23 @@ export class LostStuffModalComponent implements OnInit {
       this.vehicules[index].deleted = true; //needs to be deleted on db
     }
     
+  }
+
+  addVehiculeType(index: number, typeID: number){
+    this.vehicules[index].type = typeID;
+  }
+
+  getVehiculeType(typeID){
+    let typeName = "";
+
+    for (let index = 0; index < this.vehiculeTypes.length; index++) {
+      if(this.vehiculeTypes[index].id == typeID){
+        typeName = this.vehiculeTypes[index].name;
+        break;
+      }
+    }
+
+    return typeName;
   }
 
   updateVehicules(){

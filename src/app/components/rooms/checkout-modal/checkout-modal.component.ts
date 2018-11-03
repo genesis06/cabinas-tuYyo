@@ -99,6 +99,22 @@ export class CheckoutModalComponent implements OnInit {
     this.vehicules = [];
   }
 
+  addVehicule(){
+    this.vehicules.push( new Vehicule(0,"", false));
+  }
+
+  removeVehicule(index: number, id:number){
+    if(id == undefined){
+      console.log("undefined");
+      this.vehicules.splice(index,1); // deletes new one
+    }
+    else{
+      console.log("deleted true");
+      this.vehicules[index].deleted = true; //needs to be deleted on db
+    }
+    
+  }
+
   addVehiculeType(index: number, typeID: number){
     this.vehicules[index].type = typeID;
   }
@@ -116,6 +132,30 @@ export class CheckoutModalComponent implements OnInit {
     return typeName;
   }
 
+  validVehicules(){
+    let valid = true;
+
+
+    if(this.vehicules.length == 0 ){
+      valid = false;
+      this.showWarning("Se requiere al menos 1 tipo de vehículo registrado.");
+    }
+    else if(this.vehicules.length >= 1  ){  
+      
+      for (let index = 0; index < this.vehicules.length; index++) {
+
+        if(this.vehicules[index].type == 0){
+          this.showWarning("Los campos de tipo de vehículo son obligatorios.");
+          valid = false;
+          break;
+        }
+        
+      }
+    }
+
+    return valid;
+  }
+
   refreshed(){
     this.refresh.emit(true);
   }
@@ -126,6 +166,10 @@ export class CheckoutModalComponent implements OnInit {
 
   showInfo(message: string) {
     this.toastr.info(message, "Info");
+  }
+
+  showWarning(message: string) {
+    this.toastr.warning(message, "Advertencia");
   }
 
   showError(message: string) {
