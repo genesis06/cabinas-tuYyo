@@ -42,6 +42,11 @@
               <i class="icon cui-note"></i> Reporte
             </a>
           </li>
+          <li class="nav-item" routerLink="/dashboard" [class.selected]="router.url === '/dashboard'">
+            <a class="nav-link  white">
+              <i class="icon fa fa-chart-line"></i> Dashboard
+            </a>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link  white" (click)="logout()">

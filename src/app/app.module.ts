@@ -27,6 +27,7 @@ import { LostStuffModalComponent } from './components/rooms/lost-stuff-modal/los
 import { CheckoutModalComponent } from './components/rooms/checkout-modal/checkout-modal.component';
 import { ReportComponent } from './components/report/report.component';
 import { EditWorkShiftModalComponent } from './components/work-shift/edit-work-shift-modal/edit-work-shift-modal.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -48,6 +49,7 @@ export function tokenGetter() {
     CheckoutModalComponent,
     ReportComponent,
     EditWorkShiftModalComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

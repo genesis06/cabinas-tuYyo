@@ -9,6 +9,7 @@ import { ReportComponent } from './components/report/report.component';
 
 
 import { AuthGuard } from './shared/auth-guard/auth-guard.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Import Containers
 
@@ -19,7 +20,8 @@ export const routes: Routes = [
   { path: 'rooms', component: RoomsComponent , canActivate: [AuthGuard]},
   { path: 'articles', component: ArticlesComponent, canActivate: [AuthGuard] },
   { path: 'work-shift', component: WorkShiftComponent, canActivate: [AuthGuard] },
-  { path: 'report', component: ReportComponent ,canActivate: [AuthGuard]}
+  { path: 'report', component: ReportComponent ,canActivate: [AuthGuard]},
+  { path: 'dashboard', component: DashboardComponent ,canActivate: [AuthGuard]}
 ];
 
 
