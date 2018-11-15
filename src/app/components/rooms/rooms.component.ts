@@ -125,7 +125,7 @@ export class RoomsComponent implements OnInit {
 
   initFromDate(){
     let current = new Date();
-    current.setHours(current.getHours(),0,0,0);
+    current.setSeconds(0,0);
 
     let date = JSON.stringify(current).toString();
     return date.substring(1,date.length-1); //Remove "" characters
@@ -133,7 +133,7 @@ export class RoomsComponent implements OnInit {
 
   initToDate(){
     let current = new Date();
-    current.setHours(current.getHours()+1,0,0,0);
+    current.setMinutes(current.getMinutes()+30,59,59);
 
     let date = JSON.stringify(current).toString();
     return date.substring(1,date.length-1); //Remove "" characters
