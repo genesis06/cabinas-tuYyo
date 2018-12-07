@@ -125,7 +125,7 @@ export class AddRentModalComponent implements OnInit {
 
   addRent(){
 
-    this.isLoading = true
+    this.isLoading = true;
 
     let areValidFields = this.validateFields();
     

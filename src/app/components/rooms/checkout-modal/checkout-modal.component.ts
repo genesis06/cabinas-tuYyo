@@ -26,6 +26,8 @@ export class CheckoutModalComponent implements OnInit {
   public vehicules: Array<Vehicule> = [];
   public rent = new Rent();
 
+  public isLoading: boolean = false;
+
   constructor(private rentService: RentService, private toastr: ToastrService) {
    }
 
@@ -72,6 +74,7 @@ export class CheckoutModalComponent implements OnInit {
   
 
   checkout(){
+    this.isLoading = true;
     this.rentService.checkout(this.cabin, this.vehicules)
       .subscribe(
           (data) => {
@@ -79,6 +82,7 @@ export class CheckoutModalComponent implements OnInit {
             this.showSuccess();
             this.refreshed();
             this.lgModal.hide();
+            this.isLoading = false;
           },
           (error) => {
             console.info("response error "+JSON.stringify(error,null,4));
@@ -91,6 +95,7 @@ export class CheckoutModalComponent implements OnInit {
             }
             
             this.lgModal.hide();
+            this.isLoading = false;
           }
       );
   }

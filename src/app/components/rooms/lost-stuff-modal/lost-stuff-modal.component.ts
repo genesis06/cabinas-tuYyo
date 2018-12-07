@@ -23,6 +23,8 @@ export class LostStuffModalComponent implements OnInit {
   @Input("rent") public oldRent: any;
   @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   @Output() refresh = new EventEmitter<boolean>();
+
+  public isLoading: boolean = false;
   
 
   constructor(private rentService: RentService, private toastr: ToastrService) {
@@ -120,6 +122,7 @@ export class LostStuffModalComponent implements OnInit {
 
       this.updateVehicules();
       //console.log(this.rent.vehicules);
+      this.isLoading = true;
       this.rentService.postLostStuff(this.rent)
         .subscribe(
             (data) => {
@@ -128,12 +131,14 @@ export class LostStuffModalComponent implements OnInit {
               this.showSuccess();
               this.refreshed();
               this.lgModal.hide();
+              this.isLoading = false;
             },
             (error) => {
               //console.info("response error "+JSON.stringify(error,null,4));
                 //this.resetValues();
               this.showError();
               this.lgModal.hide();
+              this.isLoading = false;
             }
         );
     }

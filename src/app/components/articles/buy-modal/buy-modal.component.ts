@@ -24,6 +24,8 @@ export class BuyModalComponent implements OnInit {
 
   public selectedArticule: Articule;
 
+  public isLoading: boolean = false;
+
   constructor(private saleService: SaleService, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -53,17 +55,20 @@ export class BuyModalComponent implements OnInit {
 
   saleArticule(){
     let articules = new SaleArticule(this.selectedArticule.id, this.amount, this.selectedArticule.price * this.amount);
+    this.isLoading = true;
     this.saleService.saleArticule([articules])
       .subscribe(
           (data) => {
             //console.log(data);
             this.showSuccess();
             this.lgModal.hide();
+            this.isLoading = false;
           },
           (error) => {
             //console.info("response error "+JSON.stringify(error,null,4));
              this.showError();
              this.lgModal.hide();
+             this.isLoading = false;
           }
       );
       this.resetValues();

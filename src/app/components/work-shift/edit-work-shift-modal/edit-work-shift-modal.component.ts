@@ -29,6 +29,7 @@ export class EditWorkShiftModalComponent implements OnInit {
   public bill20000: number;
   public bill50000: number;
   
+  public isLoading: boolean = false;
 
   constructor(private workShiftService: WorkShiftService, private toastr: ToastrService) {
    }
@@ -59,7 +60,7 @@ export class EditWorkShiftModalComponent implements OnInit {
     this.newWorkShift.money_delivered = this.sumBills() == 0 ? this.moneyDelivered : this.sumBills();
     
     if( this.validFields()){
-
+      this.isLoading = true;
       this.workShiftService.updateWorkShift(this.newWorkShift)
       .subscribe(
           (data) => {
@@ -67,12 +68,14 @@ export class EditWorkShiftModalComponent implements OnInit {
            this.showSuccess();
             this.refreshed();
             this.lgModal.hide();
+            this.isLoading = false;
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
              // this.resetValues();
              this.showError();
              this.lgModal.hide();
+             this.isLoading = false;
           }
       );
     } 

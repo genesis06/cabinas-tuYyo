@@ -108,7 +108,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cerrar</button>
-        <button type="button" class="btn btn-sm btn-primary text-white" (click)="postLostStuff()">Guardar</button>
+        <button type="button" class="btn btn-sm btn-primary text-white" (click)="postLostStuff()" [disabled]="isDisabled()">Guardar</button>
       </div>
     </div>
   </div>

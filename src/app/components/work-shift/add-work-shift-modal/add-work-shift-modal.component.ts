@@ -26,6 +26,8 @@ export class AddWorkShiftModalComponent implements OnInit {
   public bill20000: number;
   public bill50000: number;
 
+  public isLoading: boolean = false;
+
   constructor(private workShiftService: WorkShiftService, public authGuard: AuthGuard, private toastr: ToastrService) {
    }
 
@@ -56,6 +58,7 @@ export class AddWorkShiftModalComponent implements OnInit {
     let currentUsername = this.authGuard.getCurrentUser();
 
     if( this.validFields()){
+      this.isLoading = true;
       this.workShiftService.createWorkShift(moneyReceived, currentUsername)
       .subscribe(
           (data) => {
@@ -63,12 +66,14 @@ export class AddWorkShiftModalComponent implements OnInit {
             this.refreshed();
            // this.resetValues();
            this.lgModal.hide();
+           this.isLoading = false;
           },
           (error) => {
               console.info("response error "+JSON.stringify(error,null,4));
              // this.resetValues();
             this.showError();
             this.lgModal.hide();
+            this.isLoading = false;
           }
       );
     }

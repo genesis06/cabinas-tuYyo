@@ -25,6 +25,8 @@ export class ViewInformationComponent implements OnInit {
   public vehicules: Array<Vehicule> = [];
   public contractedTimes: Array<number> = [2, 3, 12];
 
+  public isLoading: boolean = false;
+
   constructor(private rentService: RentService, private toastr: ToastrService) {
    }
 
@@ -81,6 +83,7 @@ export class ViewInformationComponent implements OnInit {
     if( this.validVehicules()){
 
       this.updateVehicules();
+      this.isLoading = true;
       this.rentService.updateRent(this.rent)
       .subscribe(
           (data) => {
@@ -88,6 +91,7 @@ export class ViewInformationComponent implements OnInit {
             this.showSuccess();
             this.resetValues();
             this.lgModal.hide();
+            this.isLoading = false;
           },
           (error) => {
               //console.info("response error "+JSON.stringify(error,null,4));
@@ -96,6 +100,7 @@ export class ViewInformationComponent implements OnInit {
               
               this.resetValues();
               this.lgModal.hide();
+              this.isLoading = false;
           }
       );
     }
