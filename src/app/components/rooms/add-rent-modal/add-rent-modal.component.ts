@@ -26,6 +26,8 @@ export class AddRentModalComponent implements OnInit {
 
   public rent: Rent;
 
+  public isLoading: boolean = false;
+
   @Input('cabin') public cabin: Cabin;
   @Input('vehiculeTypes') public vehiculeTypes: Array<VehiculeType>;
   @Output() refresh = new EventEmitter<boolean>();
@@ -117,31 +119,37 @@ export class AddRentModalComponent implements OnInit {
     return JSON.stringify(new Date(date.setHours(date.getHours()+this.rent.contracted_time)));
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   addRent(){
+
+    this.isLoading = true
 
     let areValidFields = this.validateFields();
     
     if( areValidFields ){
       this.getRentInformation();
       this.rentService.createRent(this.rent)
-        .subscribe(
-            (data) => {
-              //console.log(data);
+      .subscribe(
+          (data) => {
+            //console.log(data);
+            this.resetValues();
+            this.refreshed();
+            this.showSuccess();
+            this.lgModal.hide();
+            this.isLoading = false;
+          },
+          (error) => {
+              //console.info("response error "+JSON.stringify(error,null,4));
               this.resetValues();
-              this.refreshed();
-              this.showSuccess();
               this.lgModal.hide();
-
-            },
-            (error) => {
-                //console.info("response error "+JSON.stringify(error,null,4));
-                this.resetValues();
-                this.lgModal.hide();
-                this.showError();
-            }
-        );
+              this.showError();
+              this.isLoading = false;
+          }
+      ); 
     }
-    
   }
 
   validateFields(){
