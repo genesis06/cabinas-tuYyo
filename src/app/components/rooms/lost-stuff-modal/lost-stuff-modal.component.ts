@@ -116,6 +116,10 @@ export class LostStuffModalComponent implements OnInit {
     this.rent.vehicules = this.vehicules;
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   postLostStuff(){
 
     if( this.validVehicules()){

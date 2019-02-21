@@ -73,6 +73,10 @@ export class ViewInformationComponent implements OnInit {
       );
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   updateRent(){
     //console.log(this.rent);
     //console.log(this.vehicules);

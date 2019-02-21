@@ -55,6 +55,10 @@ export class EditWorkShiftModalComponent implements OnInit {
     return  sumBill1000+ sumBill2000+ sumBill5000+ sumBill10000+ sumBill20000+ sumBill50000;
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   updateWorkShift(){
 
     this.newWorkShift.money_delivered = this.sumBills() == 0 ? this.moneyDelivered : this.sumBills();

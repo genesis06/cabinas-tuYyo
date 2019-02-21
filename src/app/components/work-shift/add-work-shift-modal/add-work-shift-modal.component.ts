@@ -52,6 +52,10 @@ export class AddWorkShiftModalComponent implements OnInit {
     return  sumBill1000+ sumBill2000+ sumBill5000+ sumBill10000+ sumBill20000+ sumBill50000;
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   createWorkShift(){
 
     let moneyReceived = this.sumBills() == 0 ? this.moneyReceived : this.sumBills();

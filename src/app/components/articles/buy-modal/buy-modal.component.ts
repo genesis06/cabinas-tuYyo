@@ -53,6 +53,10 @@ export class BuyModalComponent implements OnInit {
     
   }
 
+  isDisabled(){
+    return this.isLoading;
+  }
+
   saleArticule(){
     let articules = new SaleArticule(this.selectedArticule.id, this.amount, this.selectedArticule.price * this.amount);
     this.isLoading = true;

@@ -72,6 +72,9 @@ export class CheckoutModalComponent implements OnInit {
       );
   }
   
+  isDisabled(){
+    return this.isLoading;
+  }
 
   checkout(){
     this.isLoading = true;
