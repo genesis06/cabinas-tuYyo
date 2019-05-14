@@ -38,6 +38,7 @@ export class CheckoutModalComponent implements OnInit {
   hideModal(){
     this.lgModal.hide();
     this.showInfo("Salida sin registrar");
+    this.isLoading = false;
   }
 
   public showModal():void {

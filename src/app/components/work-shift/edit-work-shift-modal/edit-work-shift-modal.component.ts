@@ -107,6 +107,7 @@ export class EditWorkShiftModalComponent implements OnInit {
   hideModal(){
     this.lgModal.hide();
     this.showInfo();
+    this.isLoading = false;
   }
 
   public showModal():void {

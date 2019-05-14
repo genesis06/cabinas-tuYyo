@@ -63,6 +63,7 @@ export class AddRentModalComponent implements OnInit {
     this.selectedTime = undefined;
     this.checkIn = undefined;
     this.rent = new Rent();
+    this.isLoading = false;
   }
 
   addVehicule(){

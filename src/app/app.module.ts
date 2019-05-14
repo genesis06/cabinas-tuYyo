@@ -11,6 +11,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -68,8 +69,10 @@ export function tokenGetter() {
       }
     }),
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatProgressSpinnerModule
   ],
+  exports:[MatProgressSpinnerModule],
   providers: [
     AuthGuard,
     {

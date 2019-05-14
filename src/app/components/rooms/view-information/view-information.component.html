@@ -119,7 +119,12 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-sm btn-secondary text-white" (click)="hideModal()">Cerrar</button>
-        <button type="button" class="btn btn-sm btn-primary" (click)="updateRent()">Editar</button>
+        <button type="button" class="btn btn-sm btn-primary" (click)="updateRent()" [disabled]="isDisabled()">Editar</button>
+        <mat-progress-spinner *ngIf="isDisabled()"
+            color="accent"
+            mode="indeterminate"
+            diameter="40">
+        </mat-progress-spinner>
       </div>
     </div>
   </div>

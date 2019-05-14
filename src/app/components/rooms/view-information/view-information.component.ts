@@ -179,6 +179,7 @@ export class ViewInformationComponent implements OnInit {
 
   resetValues(){
     this.vehicules = [];
+    this.isLoading = false;
   }
 
   showSuccess() {

@@ -46,6 +46,7 @@ export class LostStuffModalComponent implements OnInit {
   hideModal(){
     this.lgModal.hide();
     this.showInfo();
+    this.isLoading = false;
   }
 
   public showModal():void {
