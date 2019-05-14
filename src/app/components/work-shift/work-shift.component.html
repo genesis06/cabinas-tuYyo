@@ -131,7 +131,7 @@
         <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_received }}</td>
         <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">{{ workShift.money_delivered }}</td>
         <td *ngIf="this.authGuard.hasAdminRole() ? true : currentUsername ==  workShift.username">
-          <edit-work-shift-modal [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
+          <edit-work-shift-modal *ngIf="workShift.money_delivered == 0" [workShift]="workShift" (refresh)="onRefresh($event)"></edit-work-shift-modal>
         </td>
       </tr>
 
